@@ -1,0 +1,37 @@
+.navbtn {
+    height: 100%;
+    background-color: lightgray;
+
+    width: 64px;
+
+    border: 2px teal solid;
+    border-radius: 4px;
+
+    padding: 2px;
+    margin-right: 4px;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+
+.navbar__links{
+    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    height: 100%;
+
+}
+
+.navbar{
+    height: 50px;
+    width: 100%;
+    align-items: center;
+    padding: 0 15px;
+    background: lightgray;
+}

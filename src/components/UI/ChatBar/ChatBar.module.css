@@ -1,0 +1,30 @@
+.chatBar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: 60vh;
+
+    max-width: 450px;
+    min-width: 200px;
+    width: 25vw;
+
+
+    background: #555C7C;
+    padding-left: 5px;
+    padding-right: 5px;
+
+    border: 3px solid #1F222F;
+    border-radius: 12px;
+}
+
+.containerDiv{
+    overflow-y: scroll;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.containerInput{
+    width: 100%;
+}

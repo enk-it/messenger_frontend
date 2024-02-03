@@ -1,0 +1,27 @@
+.chat{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 60vh;
+
+    max-width: 1200px;
+    min-width: 600px;
+    width: 50vw;
+
+    background: #555C7C;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    border: 3px solid #1F222F;
+    border-radius: 12px;
+    margin-left: 4px;
+
+
+}
+
+
+.messages{
+    font-family: Montserrat, sans-serif;
+    color:wheat;
+}
+

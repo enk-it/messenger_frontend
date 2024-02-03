@@ -1,0 +1,49 @@
+.singleChat{
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding: 4px 10px;
+    width: 100%;
+    height: 70px;
+
+    border-radius: 12px;
+    background: #383C51 ;
+    border: 3px solid #1F222F;
+    font-family: Montserrat, sans-serif;
+    color:wheat;
+
+    display: flex;
+    flex-direction: column;
+
+    cursor: pointer;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+
+
+}
+
+.name{
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+.subMessage{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.userText{
+    width: 80%;
+    white-space: nowrap;
+    overflow: hidden; /* Обрезаем всё за пределами блока */
+    text-overflow: ellipsis; /* Добавляем многоточие */
+}
+
+.userTime{
+    width: 20%;
+    text-align: right;
+}

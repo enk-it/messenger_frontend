@@ -1,0 +1,33 @@
+.chatHeader{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    height: 36px;
+
+    background: #383C51;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    border: 3px solid #1F222F;
+    border-radius: 12px;
+    color: wheat;
+
+    font-family: Montserrat;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+
+
+}
+
