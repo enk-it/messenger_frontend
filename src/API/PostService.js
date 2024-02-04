@@ -1,20 +1,25 @@
 import axios from "axios";
 
+// const server_path = 'http://192.168.0.12:8000/' //debug
+const server_path = 'http://192.168.0.17:8000/' //production
+
+
 export default class PostService {
 
+
     static async tryLogin(username, password){
-        const response = await axios.post('http://192.168.0.12:8000/login/', {username:username, hashed_password:password, client_id:'12'})
+        const response = await axios.post(server_path + 'login/', {username:username, hashed_password:password, client_id:'12'})
         return response
     }
 
 
     static async tryRegister(username, password, client_id){
-        const response = await axios.post('http://192.168.0.12:8000/register/', {username:username, hashed_password:password, client_id: client_id})
+        const response = await axios.post(server_path + 'register/', {username:username, hashed_password:password, client_id: client_id})
         return response
     }
 
     static async getChats(token) {
-        const response = await axios.get('http://192.168.0.12:8000/get_chats/', {
+        const response = await axios.get(server_path + 'get_chats/', {
             headers: {
                 'Authorization': `Bearer ${token}`
             }})
@@ -23,7 +28,7 @@ export default class PostService {
 
 
     static async getUsers(token) {
-        const response = await axios.get('http://192.168.0.12:8000/get_users/', {
+        const response = await axios.get(server_path + 'get_users/', {
             headers: {
                 'Authorization': `Bearer ${token}`
             }})
@@ -31,7 +36,7 @@ export default class PostService {
     }
 
     static async getMessages(token, chat_id) {
-        const response = await axios.get('http://192.168.0.12:8000/get_messages/', {
+        const response = await axios.get(server_path + 'get_messages/', {
             headers: {
                 'Authorization': `Bearer ${token}`
             },
@@ -41,7 +46,7 @@ export default class PostService {
     }
 
     static async sendMessage(token, chat_id, content) {
-        const response = await axios.post('http://192.168.0.12:8000/send_message/', {
+        const response = await axios.post(server_path + 'send_message/', {
             chat_id:chat_id,
             content:content
         },
@@ -53,7 +58,7 @@ export default class PostService {
     }
 
     static async startChat(token, user_id) {
-        const response = await axios.get('http://192.168.0.12:8000/start_chat/', {
+        const response = await axios.get(server_path + 'start_chat/', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 },

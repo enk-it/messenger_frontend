@@ -1,0 +1,12 @@
+[Unit]
+Description=messenger frontend daemon
+After=multi-user.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/jakiro/messenger_frontend/
+ExecStart=serve build
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
