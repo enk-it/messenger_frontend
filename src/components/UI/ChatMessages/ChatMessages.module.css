@@ -33,14 +33,14 @@
     padding-top: 6px;
 }
 
-.messagePlaceholderRight{
+.messagePlaceholderLeft{
     padding-right: 6px;
     width: 100%;
     display: flex;
     justify-content: flex-end;
 }
 
-.messagePlaceholderLeft{
+.messagePlaceholderRight{
     width: 100%;
     display: flex;
     justify-content: flex-start;

@@ -4,8 +4,8 @@ import {useFetching} from "../hooks/useFetching";
 import PostService from "../API/PostService";
 import Chat from "../components/UI/Chat/Chat";
 
-// const server_path = 'ws://192.168.0.12:8000/' //debug
-const server_path = 'ws://192.168.0.17:8000/' //production
+const server_path = 'ws://192.168.0.12:8000/' //debug
+// const server_path = 'ws://192.168.0.17:8000/' //production
 
 
 const Chats = () => {
@@ -104,20 +104,26 @@ const Chats = () => {
 
         ws.current.onmessage = e => {                //подписка на получение данных по вебсокету
             const message = e.data
+
+            console.log(message)
+
+
+            const parsed_message = JSON.parse(message)
+
             const errors = ['Auth failed. Check your Authorization data', 'Fake token', 'Your token is disabled']
-            if (message === "Provide your Bearer token"){
+            if (parsed_message.info === "Provide your Bearer token"){
                 console.log(message)
                 ws.current.send('Bearer ' + token)
             }
-            else if (message === "Auth succeeded"){
+            else if (parsed_message.info === "Auth succeeded"){
                 console.log(message)
                 // ws.current.close()
             }
-            else if (errors.includes(message)){
-                console.log(message)
+            else if (errors.includes(parsed_message.info)){
+                console.log(parsed_message.info)
             }
-            else{
-                const new_message = JSON.parse(message)
+            else if (parsed_message.info === "newMessage"){
+                const new_message = parsed_message.message
                 setNewMessage(new_message)
             }
 

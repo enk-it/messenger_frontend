@@ -18,9 +18,9 @@ const ChatMessages = ({chat}) => {
         let messages = []
 
         for (let i = chat.messages.length - 1; i >= 0 ; i--){
-            if (chat.messages[i].user_id !== userId){
+            if (chat.messages[i].incoming === true){
                 messages.push(
-                    <div className={classes.messagePlaceholderLeft}>
+                    <div className={classes.messagePlaceholderRight}>
                         <div className={classes.singleMessage}>
                             <div>
                                 {chat.messages[i].content}
@@ -34,7 +34,7 @@ const ChatMessages = ({chat}) => {
             }
             else{
                 messages.push(
-                    <div className={classes.messagePlaceholderRight}>
+                    <div className={classes.messagePlaceholderLeft}>
                         <div className={classes.singleMessage}>
                             <div>
                                 {chat.messages[i].content}
