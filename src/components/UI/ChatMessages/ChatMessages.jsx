@@ -1,12 +1,7 @@
-import React, {useContext, useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useRef} from 'react';
 import classes from './ChatMessages.module.css'
-import {useFetching} from "../../../hooks/useFetching";
-import PostService from "../../../API/PostService";
 import {AuthContext} from "../../../context";
-import {getTicks} from "../../../utils/ticks";
 const ChatMessages = ({chat}) => {
-
-    const {userId, setUserId} = useContext(AuthContext);
 
 
     const getReadableDate = (timestamp) => {

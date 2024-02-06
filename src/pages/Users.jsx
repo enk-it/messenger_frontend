@@ -1,17 +1,13 @@
-import React, {useCallback, useContext, useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {AuthContext} from "../context";
-import ChatBar from "../components/UI/ChatBar/ChatBar";
-import ChatView from "../components/UI/ChatView/ChatView";
 import {useFetching} from "../hooks/useFetching";
 import PostService from "../API/PostService";
-import {getTicks} from "../utils/ticks";
 import UsersList from "../components/UI/UsersList/UsersList";
 
 
 
 const Users = () => {
 
-    const {isAuth, setIsAuth} = useContext(AuthContext)
     const {token, setToken} = useContext(AuthContext)
 
     const [users, setUsers] = useState([])

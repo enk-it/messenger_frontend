@@ -12,9 +12,6 @@ const Register = () => {
     const {token, setToken} = useContext(AuthContext)
 
     const [username, setUsername] = useState('')
-    const [firstName, setFirstName] = useState('')
-    const [lastName, setLastName] = useState('')
-    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
     const [fetchRegister, isLoading, error] = useFetching(async (username, password, client_id) => {

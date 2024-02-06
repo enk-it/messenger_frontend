@@ -10,7 +10,6 @@ const server_path = 'ws://192.168.0.12:8000/' //debug
 
 const Chats = () => {
 
-    const {isAuth, setIsAuth} = useContext(AuthContext)
     const {token, setToken} = useContext(AuthContext)
 
     const ws = useRef(null);

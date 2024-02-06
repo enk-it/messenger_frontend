@@ -4,7 +4,6 @@ import MyButton from "../components/UI/button/MyButton";
 import {AuthContext} from "../context";
 import PostService from "../API/PostService";
 import {useFetching} from "../hooks/useFetching";
-import ChatBar from "../components/UI/ChatBar/ChatBar";
 import ChatHeader from "../components/UI/ChatHeader/ChatHeader";
 
 const Login = () => {
