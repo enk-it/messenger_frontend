@@ -11,8 +11,11 @@
     font-family: Montserrat, sans-serif;
     color:wheat;
 
+
     display: flex;
-    flex-direction: column;
+
+    flex-direction: row;
+
 
     cursor: pointer;
 
@@ -24,6 +27,16 @@
 
 
 }
+
+
+.textData{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
 
 .name{
     margin-bottom: 5px;
@@ -46,4 +59,25 @@
 .userTime{
     width: 20%;
     text-align: right;
+}
+
+.avatar{
+    height: 56px;
+    width: 56px;
+    aspect-ratio: 1;
+
+    border: 3px solid #1F222F;
+    border-radius: 64px;
+
+}
+
+.pictureBackground{
+
+    display: flex;
+    justify-content: center;
+    align-items:center;
+
+    height: 56px;
+    width: 56px;
+
 }

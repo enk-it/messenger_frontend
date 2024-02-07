@@ -26,11 +26,20 @@ const ChatMiniature = (chat, setCurrentChatId) => {
 
     return (
         <div className={classes.singleChat} onClick={() => {console.log(chat); setCurrentChatId(chat.chat_id)}}>
-            <div className={classes.name}>{chat.title}</div>
-            <div className={classes.subMessage}>
-                <div className={classes.userText}>{getLastMessageText(chat)}</div>
-                <div className={classes.userTime}>{getReadableDate(getLastMessageTime(chat))}</div>
+            <div className={classes.pictureBackground}>
+                <img alt={''} src={'http://192.168.0.12:8000/share/avatar/' + chat.avatar_url} className={classes.avatar}></img>
             </div>
+
+            <div className={classes.textData}>
+                <div className={classes.name}>
+                    {chat.title}
+                </div>
+                <div className={classes.subMessage}>
+                    <div className={classes.userText}>{getLastMessageText(chat)}</div>
+                    <div className={classes.userTime}>{getReadableDate(getLastMessageTime(chat))}</div>
+                </div>
+            </div>
+
         </div>
     );
 };

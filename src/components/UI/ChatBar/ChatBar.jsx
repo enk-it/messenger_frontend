@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import classes from './ChatBar.module.css'
-import singleChat from "../ChatMiniature/ChatMiniature";
+import ChatMiniature from "../ChatMiniature/ChatMiniature";
 import MyInput from "../input/MyInput";
 const ChatBar = ({chats, setCurrentChatId}) => {
 
@@ -36,7 +36,7 @@ const ChatBar = ({chats, setCurrentChatId}) => {
             </div>
             <div className={classes.containerDiv}>
                 {chats.map((chat) => {
-                    return singleChat(chat, setCurrentChatId)
+                    return ChatMiniature(chat, setCurrentChatId)
                 })}
             </div>
         </div>
