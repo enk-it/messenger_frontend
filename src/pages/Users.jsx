@@ -25,6 +25,9 @@ const Users = () => {
     const [fetchStartChat, isLoading, error] = useFetching(async (token, user_id) => {
 
         const response = await PostService.startChat(token, user_id)
+        if (response.data.status !== 200){
+            alert(response.data.detail)
+        }
     })
 
 

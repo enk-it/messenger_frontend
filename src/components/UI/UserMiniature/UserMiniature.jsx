@@ -19,7 +19,7 @@ const UserMiniature = ({user, startChat}) => {
         }}>
             <div className={classes.subMessage}>
                 <div className={classes.pictureBackground}>
-                    <img src={default_avatar} className={classes.userPicture} alt=""/>
+                    <img src={'http://192.168.0.12:8000/share/avatar/' + user.avatar_url} className={classes.userPicture} alt=""/>
                 </div>
                 <div className={classes.userText}>{user.username}</div>
                 <div className={classes.userText}>{'id' + user.user_id}</div>

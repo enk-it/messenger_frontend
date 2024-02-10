@@ -23,6 +23,9 @@ const Navbar = () => {
             <MyButton  onClick={() => navigate("/users")}>
                 Users
             </MyButton>,
+            <MyButton  onClick={() => navigate("/profile")}>
+                Profile
+            </MyButton>,
             <MyButton onClick={logout}>
                 LogOut
             </MyButton>]

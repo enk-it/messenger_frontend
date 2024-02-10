@@ -58,14 +58,20 @@ export default class PostService {
     }
 
     static async startChat(token, user_id) {
-        const response = await axios.get(server_path + 'start_chat/', {
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                },
-                params: { user_id: user_id }
-            }
-        )
-        return response
+        try {
+            const response = await axios.get(server_path + 'start_chat/', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    },
+                    params: { user_id: user_id }
+                }
+            )
+            return response
+        }
+        catch (error){
+            return error.response
+        }
+
     }
 
 

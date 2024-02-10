@@ -19,6 +19,7 @@ const Chats = () => {
     const [currentChatId, setCurrentChatId] = useState(-1);
 
     const [newMessage, setNewMessage] = useState(null)
+    const [newChat, setNewChat] = useState(null)
 
     const [fetchChats, isChatsLoading, chatsError] = useFetching(async (token) => {
 
@@ -48,18 +49,20 @@ const Chats = () => {
 
 
     useEffect(() => {
-        updateChats()
+        updateMessage()
     }, [newMessage]);
 
+    useEffect(() => {
+        updateChat()
+    }, [newChat]);
 
-    const updateChats = () => {
 
+    const updateMessage = () => {
         if (chats.length === 0 || newMessage===null){
             console.log(newMessage)
             console.log(chats)
             return
         }
-
 
         console.log(newMessage)
 
@@ -98,6 +101,35 @@ const Chats = () => {
     }
 
 
+    const updateChat = () => {
+        if (newChat===null){
+            console.log(newChat)
+            console.log(chats)
+            return
+        }
+
+        console.log(newChat)
+
+        let newChats = []
+
+        // console.log(new_message)
+        for (let i = 0; i < chats.length; i++){
+            const old_chat = chats[i]
+            newChats = [old_chat,...newChats]
+        }
+
+        newChats = [newChat,...newChats]
+
+        newChats.sort(
+            (m1, m2) => {
+                return m1.chat_id - m2.chat_id;
+            }
+        )
+
+        setChats(newChats)
+    }
+
+
     const gettingData = () => {
         if (!ws.current) return;
 
@@ -124,6 +156,11 @@ const Chats = () => {
             else if (parsed_message.info === "newMessage"){
                 const new_message = parsed_message.message
                 setNewMessage(new_message)
+            }
+            else if (parsed_message.info === "newChat"){
+                const new_chat = parsed_message.chat
+                setNewChat(new_chat)
+
             }
 
 
