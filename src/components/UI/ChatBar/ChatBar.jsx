@@ -2,6 +2,7 @@ import React, {useCallback, useEffect, useState} from 'react';
 import classes from './ChatBar.module.css'
 import ChatMiniature from "../ChatMiniature/ChatMiniature";
 import MyInput from "../input/MyInput";
+import Input from "../../new_UI/Input/Input";
 const ChatBar = ({chats, setCurrentChatId}) => {
 
     const backToChooseChat = useCallback((event) => {
@@ -31,9 +32,8 @@ const ChatBar = ({chats, setCurrentChatId}) => {
         <div className={classes.chatBar}>
 
 
-            <div className={classes.containerInput}>
-                <MyInput onChange={(e) => {setQuery(e.target.value)}}></MyInput>
-            </div>
+            <Input placeholder={'Input chat title or username'} styles={classes.Input} onChange={(e) => {setQuery(e.target.value)}}></Input>
+
             <div className={classes.containerDiv}>
                 {chats.map((chat) => {
                     return ChatMiniature(chat, setCurrentChatId)

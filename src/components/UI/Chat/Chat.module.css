@@ -1,5 +1,25 @@
 .chat{
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+.container{
+    width: 90%;
+    height: 90%;
+
+    position: absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    margin: auto auto 0px;
+
+    background: white;
+    border-radius: 16px 16px 0px 0px;
+    border: solid 1px #ECEEF2;
+    overflow: clip;
 }

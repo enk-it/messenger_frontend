@@ -8,12 +8,13 @@ const Chat = ({chats, currentChatId, setCurrentChatId}) => {
 
 
     return (
-        <div>
+        <div className={classes.container}>
             <div className={classes.chat}>
                 <ChatBar chats={chats} setCurrentChatId={setCurrentChatId}/>
                 <ChatView chats={chats} chatId={currentChatId}/>
             </div>
         </div>
+
     );
 };
 

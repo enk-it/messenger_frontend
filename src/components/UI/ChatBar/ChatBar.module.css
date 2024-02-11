@@ -3,19 +3,16 @@
     flex-direction: column;
     align-items: center;
 
-    height: 60vh;
+    height: 100%;
 
     max-width: 450px;
     min-width: 200px;
-    width: 25vw;
+    width: 25%;
 
 
-    background: #555C7C;
-    padding-left: 5px;
-    padding-right: 5px;
+    background: #FFFFFF;
 
-    border: 3px solid #1F222F;
-    border-radius: 12px;
+    border: 1px solid #ECEEF2;
 }
 
 .containerDiv{
@@ -25,6 +22,15 @@
     border-radius: 10px;
 }
 
-.containerInput{
+.containerDiv::-webkit-scrollbar {
+    display: none;
+}
+
+
+.Input{
     width: 100%;
+    height: 48px;
+    font-size: 22px;
+    padding: 10px;
+    border-radius: 48px;
 }

@@ -5,17 +5,11 @@
     width: 100%;
     height: 70px;
 
-    border-radius: 12px;
-    background: #383C51 ;
-    border: 3px solid #1F222F;
-    font-family: Montserrat, sans-serif;
-    color:wheat;
-
+    background: white ;
 
     display: flex;
 
     flex-direction: row;
-
 
     cursor: pointer;
 
@@ -65,7 +59,6 @@
     height: 56px;
     width: 56px;
     aspect-ratio: 1;
-    border: 3px solid #1F222F;
     border-radius: 64px;
 
 }

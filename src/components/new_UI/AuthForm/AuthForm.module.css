@@ -77,10 +77,24 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
-
 }
+
+.options_tinted{
+    background: #F5F5F5;
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 
 .divider{
     border-left:1px solid #ECEEF2;
+}
+
+.errorfield{
+    color:red;
+    height: 32px;
 }

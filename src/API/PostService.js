@@ -7,13 +7,13 @@ const server_path = 'http://192.168.0.12:8000/' //debug
 export default class PostService {
 
 
-    static async tryLogin(username, password){
-        const response = await axios.post(server_path + 'login/', {username:username, hashed_password:password, client_id:'12'})
+    static async login(username, password, client_id){
+        const response = await axios.post(server_path + 'login/', {username:username, hashed_password:password, client_id:client_id})
         return response
     }
 
 
-    static async tryRegister(username, password, client_id){
+    static async register(username, password, client_id){
         const response = await axios.post(server_path + 'register/', {username:username, hashed_password:password, client_id: client_id})
         return response
     }

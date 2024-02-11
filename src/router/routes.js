@@ -1,9 +1,7 @@
 import Chats from "../pages/Chats";
-import Login from "../pages/Login";
 import Users from "../pages/Users";
 import Profile from "../pages/Profile";
 
-import Register from "../pages/Register";
 import Welcome from "../pages/Welcome";
 
 export const privateRoutes = [
@@ -15,8 +13,6 @@ export const privateRoutes = [
 ]
 
 export const publicRoutes = [
-    {key:3, path: '/register', component: Register, exact: true},
-    {key:4, path: '/login', component: Login, exact: true},
     {key:6, path: '/', component: Welcome},
 
 ]
