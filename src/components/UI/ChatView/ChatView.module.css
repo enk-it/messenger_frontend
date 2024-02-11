@@ -2,26 +2,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 60vh;
+    height: 100%;
 
     max-width: 1200px;
     min-width: 600px;
-    width: 50vw;
+    width: 100%;
 
-    background: #555C7C;
-    padding-left: 10px;
-    padding-right: 10px;
-
-    border: 3px solid #1F222F;
-    border-radius: 12px;
-    margin-left: 4px;
-
-
+    background: #F6F7F9;
 }
 
-
-.messages{
-    font-family: Montserrat, sans-serif;
-    color:wheat;
-}
 

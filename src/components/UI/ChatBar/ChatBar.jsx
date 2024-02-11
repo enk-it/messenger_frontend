@@ -31,8 +31,10 @@ const ChatBar = ({chats, setCurrentChatId}) => {
     return (
         <div className={classes.chatBar}>
 
+            <div className={classes.tempPlaceholder}>
 
-            <Input placeholder={'Input chat title or username'} styles={classes.Input} onChange={(e) => {setQuery(e.target.value)}}></Input>
+            </div>
+            <Input placeholder={'Search'} styles={classes.Input} onChange={(e) => {setQuery(e.target.value)}}></Input>
 
             <div className={classes.containerDiv}>
                 {chats.map((chat) => {

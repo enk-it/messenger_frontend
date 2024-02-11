@@ -5,21 +5,14 @@
 
     text-align: center;
 
-    height: 36px;
+    height: 64px;
 
-    background: #383C51;
+    background: white;
     padding-left: 10px;
     padding-right: 10px;
 
     width: 100%;
-    margin-top: 5px;
-    margin-bottom: 5px;
 
-    border: 3px solid #1F222F;
-    border-radius: 12px;
-    color: wheat;
-
-    font-family: Montserrat;
 
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */

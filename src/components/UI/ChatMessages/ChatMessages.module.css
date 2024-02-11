@@ -7,15 +7,12 @@
     margin-bottom: 5px;
     height: 100%;
 
-    font-family: Montserrat;
 }
 
 .singleMessage{
     border-radius: 12px;
-    background: #383C51 ;
-    border: 1px solid #1F222F;
-    font-family: Montserrat;
-    color:wheat;
+    background: #CDDFE9 ;
+    border: 1px solid #ECEEF2;
     padding: 4px 8px;
     margin-top: 1px;
     margin-bottom: 1px;
@@ -47,6 +44,7 @@
 }
 
 ::-webkit-scrollbar {
+    display: none;
     width: 6px;
 }
 /* Track */

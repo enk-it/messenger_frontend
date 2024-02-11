@@ -103,7 +103,6 @@ const AuthForm = () => {
         <form onSubmit={submit} className={classes.container}>
             <div className={classes.chooseContainer}>
                 <div onClick={() => {if (!registration) return; setRegistration(false); clearFields()}} className={{true: classes.options,false: classes.options_tinted}[registration]}>{'Login'}</div>
-                <div className={classes.divider}></div>
                 <div onClick={() => {if (registration) return; setRegistration(true); clearFields()}} className={{true: classes.options,false: classes.options_tinted}[!registration]}>{'Register'}</div>
             </div>
             {subForm()}

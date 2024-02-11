@@ -12,7 +12,7 @@
     margin: auto;
 
     border-radius: 16px;
-    border: solid 1px #ECEEF2;
+    /*border: solid 1px #ECEEF2;*/
     overflow: clip;
 
     display: flex;
@@ -80,18 +80,15 @@
 }
 
 .options_tinted{
-    background: #F5F5F5;
+    /*background: #F5F5F5;*/
+    /*background: #52C1FF;*/
+    background: #00A4FF;
     height: 100%;
     width: 100%;
 
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-
-.divider{
-    border-left:1px solid #ECEEF2;
 }
 
 .errorfield{

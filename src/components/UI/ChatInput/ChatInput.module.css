@@ -1,15 +1,21 @@
 .chatInput{
-    background: #383C51;
-    font-family: Montserrat;
-    color: wheat;
-    border: 3px solid #1F222F;
-    border-radius: 12px;
-    min-height: 32px;
-    max-width: 100%;
+
+    border-radius: 48px;
+    height: 48px;
     word-break: break-all;
     width: 100%;
-    outline: none;
-    padding: 2px 6px;
+    padding: 5px;
+    font-size: 24px;
+
+}
+
+.InputBack{
+    background: white;
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
 
@@ -25,22 +31,19 @@
 }
 
 .chatButtonImg{
-    height: 14px;
-    width: 14px;
+    height: 36px;
+    width: 36px;
 
 }
 
 .chatButtonSubmit{
-    background: #383C51;
-    font-family: Montserrat;
-    color: wheat;
-    border: 3px solid #1F222F;
-    border-radius: 12px;
-    height: 32px;
+    overflow: clip;
+    border-radius: 48px;
+    height: 48px;
     aspect-ratio: 1 / 1;
     padding: 6px;
     display: flex;
-    align-content: center;
+    align-items: center;
     justify-content: center;
     cursor: pointer;
 

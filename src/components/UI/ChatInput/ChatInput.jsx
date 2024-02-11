@@ -4,6 +4,8 @@ import send from './icons/send-message.png'
 import {useFetching} from "../../../hooks/useFetching";
 import PostService from "../../../API/PostService";
 import {AuthContext} from "../../../context";
+import Input from "../../new_UI/Input/Input";
+import Button from "../../new_UI/Button/Button";
 const ChatInput = ({chat}) => {
 
     const [message, setMessage] = useState('')
@@ -32,10 +34,22 @@ const ChatInput = ({chat}) => {
 
     return (
         <form onSubmit={onMessageSend} className={classes.chatContainer}>
-            <input ref={inputRef} contentEditable={'true'} onChange={(event) => {setMessage(event.target.value)}} placeholder={"Начните писать..."} className={classes.chatInput} type="text"></input>
-            <button className={classes.chatButtonSubmit}>
-                <img className={classes.chatButtonImg} src={send} alt=""/>
-            </button>
+            {/*<input ref={inputRef} contentEditable={'true'} onChange={(event) => {setMessage(event.target.value)}} placeholder={"Начните писать..."} className={classes.chatInput} type="text"></input>*/}
+
+            <div className={classes.InputBack}>
+                <Input styles={classes.chatInput} type="text" ref={inputRef} onChange={(event) => {
+                    setMessage(event.target.value)
+                }} placeholder={"Начните писать..."}></Input>
+
+                <Button styles={classes.chatButtonSubmit}>
+                    <img className={classes.chatButtonImg} src={send} alt=""/>
+
+                </Button>
+
+
+            </div>
+
+
         </form>
     );
 };

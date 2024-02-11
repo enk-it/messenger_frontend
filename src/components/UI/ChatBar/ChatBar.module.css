@@ -13,6 +13,7 @@
     background: #FFFFFF;
 
     border: 1px solid #ECEEF2;
+    border-top: 0;
 }
 
 .containerDiv{
@@ -33,4 +34,9 @@
     font-size: 22px;
     padding: 10px;
     border-radius: 48px;
+}
+
+.tempPlaceholder{
+    background: white;
+    height: 64px;
 }

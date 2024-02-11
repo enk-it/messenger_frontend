@@ -38,7 +38,7 @@ const Chats = () => {
         )
 
         setChats(backend_chats);
-        console.log(response.data.chats, 'chats data from backend')
+        // console.log(response.data.chats, 'chats data from backend')
     })
 
 
@@ -58,12 +58,12 @@ const Chats = () => {
 
     const updateMessage = () => {
         if (chats.length === 0 || newMessage===null){
-            console.log(newMessage)
-            console.log(chats)
+            // console.log(newMessage)
+            // console.log(chats)
             return
         }
 
-        console.log(newMessage)
+        // console.log(newMessage)
 
         let newChats = []
 
@@ -102,12 +102,12 @@ const Chats = () => {
 
     const updateChat = () => {
         if (newChat===null){
-            console.log(newChat)
-            console.log(chats)
+            // console.log(newChat)
+            // console.log(chats)
             return
         }
 
-        console.log(newChat)
+        // console.log(newChat)
 
         let newChats = []
 
@@ -135,22 +135,18 @@ const Chats = () => {
         ws.current.onmessage = e => {                //подписка на получение данных по вебсокету
             const message = e.data
 
-            console.log(message)
 
 
             const parsed_message = JSON.parse(message)
 
             const errors = ['Auth failed. Check your Authorization data', 'Fake token', 'Your token is disabled']
             if (parsed_message.info === "Provide your Bearer token"){
-                console.log(message)
                 ws.current.send('Bearer ' + token)
             }
             else if (parsed_message.info === "Auth succeeded"){
-                console.log(message)
                 // ws.current.close()
             }
             else if (errors.includes(parsed_message.info)){
-                console.log(parsed_message.info)
             }
             else if (parsed_message.info === "newMessage"){
                 const new_message = parsed_message.message
@@ -159,10 +155,7 @@ const Chats = () => {
             else if (parsed_message.info === "newChat"){
                 const new_chat = parsed_message.chat
                 setNewChat(new_chat)
-
             }
-
-
             // setData(message);
         };
     }
