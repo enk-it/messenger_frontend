@@ -36,7 +36,7 @@ const AuthForm = () => {
 
         setUserId(response.data.user_id);
         setToken(response.data.token);
-        // setIsAuth(true);
+        setIsAuth(true);
     }
 
     const [lastError, setError] = useState('')
@@ -78,7 +78,7 @@ const AuthForm = () => {
     }
 
 
-    const  submit = (event) => {
+    const submit = (event) => {
         event.preventDefault()
 
         if (username === ''){

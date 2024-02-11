@@ -3,7 +3,7 @@ import classes from './ChatBar.module.css'
 import ChatMiniature from "../ChatMiniature/ChatMiniature";
 import MyInput from "../input/MyInput";
 import Input from "../../new_UI/Input/Input";
-const ChatBar = ({chats, setCurrentChatId}) => {
+const ChatBar = ({chats, setCurrentChatId, chatId}) => {
 
     const backToChooseChat = useCallback((event) => {
         if (event.key === 'Escape') {
@@ -38,7 +38,7 @@ const ChatBar = ({chats, setCurrentChatId}) => {
 
             <div className={classes.containerDiv}>
                 {chats.map((chat) => {
-                    return ChatMiniature(chat, setCurrentChatId)
+                    return ChatMiniature(chat, setCurrentChatId, chatId)
                 })}
             </div>
         </div>

@@ -1,6 +1,6 @@
 .singleChat{
-    margin-bottom: 5px;
-    margin-top: 5px;
+    /*margin-bottom: 5px;*/
+    /*margin-top: 5px;*/
     padding: 4px 10px;
     width: 100%;
     height: 70px;
@@ -18,8 +18,33 @@
     -moz-user-select: none; /* Old versions of Firefox */
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none;
+}
+
+.singleChat:hover{
+    background: #E4E7ED ;
+}
 
 
+.singleChatActive{
+    /*margin-bottom: 5px;*/
+    /*margin-top: 5px;*/
+    padding: 4px 10px;
+    width: 100%;
+    height: 70px;
+
+    background:  #00A4FF ;
+
+    display: flex;
+
+    flex-direction: row;
+
+    cursor: pointer;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
 }
 
 

@@ -10,7 +10,7 @@ const Chat = ({chats, currentChatId, setCurrentChatId}) => {
     return (
         <div className={classes.container}>
             <div className={classes.chat}>
-                <ChatBar chats={chats} setCurrentChatId={setCurrentChatId}/>
+                <ChatBar chats={chats} setCurrentChatId={setCurrentChatId} chatId={currentChatId}/>
                 <ChatView chats={chats} chatId={currentChatId}/>
             </div>
         </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from "./ChatMiniature.module.css";
 
-const ChatMiniature = (chat, setCurrentChatId) => {
+const ChatMiniature = (chat, setCurrentChatId, chatId) => {
 
     const getLastMessageText = (chat) => {
         if (chat !== null && chat.messages.length !== 0){
@@ -22,10 +22,18 @@ const ChatMiniature = (chat, setCurrentChatId) => {
         return new Intl.DateTimeFormat('ru-RU', {hour: '2-digit', minute: '2-digit'}).format(timestamp * 1000)
     }
 
+    const getCurrentStyle = () => {
+        if (chat.chat_id === chatId){
+            return classes.singleChatActive
+        }
+        return classes.singleChat
+
+    }
+
 
 
     return (
-        <div className={classes.singleChat} onClick={() => {console.log(chat); setCurrentChatId(chat.chat_id)}}>
+        <div className={getCurrentStyle()} onClick={() => {setCurrentChatId(chat.chat_id)}}>
             <div className={classes.pictureBackground}>
                 <img alt={''} src={'http://192.168.0.12:8000/share/avatar/' + chat.avatar_url} className={classes.avatar}></img>
             </div>
