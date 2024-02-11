@@ -2,7 +2,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Montserrat, sans-serif;
 
+}
+
+body{
+    background: #CDDFE9
 }
 
 
@@ -13,55 +18,4 @@
 
 }
 
-.App{
-    width: 800px ;
 
-
-}
-
-.post{
-    display: flex;
-    padding: 15px;
-    border: 2px solid teal;
-    margin-top:15px;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.post-enter {
-    transform: translateX(-350px);
-}
-.post-enter-active {
-    transform: translateX(0px);
-    transition: all 500ms ease-in;
-}
-.post-exit {
-    opacity: 1;
-}
-.post-exit-active {
-    transform: translateX(-350px);
-    transition: all 500ms ease-in;
-}
-
-.page__wrapper {
-    margin-top: 30px;
-    display: flex;
-}
-
-.page{
-
-    padding: 10px;
-    border: 1px solid teal;
-    cursor: pointer;
-}
-
-.page__current{
-    border: 3px solid orange;
-    font-weight: bold;
-
-}
-
-
-.post_btns{
-    display: flex;
-}

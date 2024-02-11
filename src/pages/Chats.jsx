@@ -47,7 +47,6 @@ const Chats = () => {
         gettingData();
     }, [ws]);
 
-
     useEffect(() => {
         updateMessage()
     }, [newMessage]);

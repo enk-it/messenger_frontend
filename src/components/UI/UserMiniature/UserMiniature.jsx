@@ -1,6 +1,5 @@
 import React from 'react';
 import classes from "./UserMiniature.module.css";
-import default_avatar from '../../../pictures/avatar.png';
 import MyButton from "../button/MyButton";
 
 
