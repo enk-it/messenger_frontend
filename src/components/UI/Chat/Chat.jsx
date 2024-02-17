@@ -1,4 +1,3 @@
-
 import classes from './Chat.module.css'
 import ChatBar from "../ChatBar/ChatBar";
 import ChatView from "../ChatView/ChatView";

@@ -1,0 +1,63 @@
+.singleMessage{
+    border-radius: 12px;
+    background: #CDDFE9 ;
+    border: 1px solid #ECEEF2;
+    padding: 4px 8px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    text-align: center;
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.25);
+
+
+
+}
+
+.messageTime{
+    margin-left: 4px;
+    margin-right: 4px;
+    font-size: 10px;
+    padding-top: 6px;
+}
+
+.messagePlaceholderLeft{
+    padding-right: 6px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.messagePlaceholderRight{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+.read_indicator{
+    background: #00A4FF;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.containerRight{
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
+.containerLeft{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+
+
+
+

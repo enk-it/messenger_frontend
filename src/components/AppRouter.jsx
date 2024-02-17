@@ -15,7 +15,6 @@ const AppRouter = () => {
         return <Loader/>
     }
 
-
     if (isAuth){
         return (
             <Routes>

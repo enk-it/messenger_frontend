@@ -1,6 +1,9 @@
 import React, {useContext, useEffect, useRef} from 'react';
 import classes from './ChatMessages.module.css'
 import {AuthContext} from "../../../context";
+
+import Message from "../../new_UI/Message/Message";
+
 const ChatMessages = ({chat}) => {
 
 
@@ -9,42 +12,15 @@ const ChatMessages = ({chat}) => {
         return new Intl.DateTimeFormat('ru-RU', {hour: '2-digit', minute: '2-digit'}).format(timestamp * 1000)
     }
 
+
     const renderMessages = () => {
-        let messages = []
+    let messages = []
 
-        for (let i = chat.messages.length - 1; i >= 0 ; i--){
-            if (chat.messages[i].incoming === true){
-                messages.push(
-                    <div className={classes.messagePlaceholderRight}>
-                        <div className={classes.singleMessage}>
-                            <div>
-                                {chat.messages[i].content}
-                            </div>
-                            <div className={classes.messageTime}>
-                                {getReadableDate(chat.messages[i].datetime)}
-                            </div>
-                        </div>
-                    </div>
-                )
-            }
-            else{
-                messages.push(
-                    <div className={classes.messagePlaceholderLeft}>
-                        <div className={classes.singleMessage}>
-                            <div>
-                                {chat.messages[i].content}
-                            </div>
-                            <div className={classes.messageTime}>
-                                {getReadableDate(chat.messages[i].datetime)}
-                            </div>
-                        </div>
-                    </div>
-                )
+            for (let i = chat.messages.length - 1; i >= 0 ; i--){
+                messages.push(<Message content={chat.messages[i].content} datetime={chat.messages[i].datetime} incoming={chat.messages[i].incoming} is_read={false}/>);
             }
 
-        }
-
-        return messages
+            return messages
     }
 
 
