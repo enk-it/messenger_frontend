@@ -15,7 +15,6 @@ const ChatMessages = ({chat}) => {
 
     const renderMessages = () => {
     let messages = []
-
             for (let i = chat.messages.length - 1; i >= 0 ; i--){
                 messages.push(<Message content={chat.messages[i].content} datetime={chat.messages[i].datetime} incoming={chat.messages[i].incoming} is_read={false}/>);
             }

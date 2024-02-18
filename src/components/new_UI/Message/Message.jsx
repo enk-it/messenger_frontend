@@ -34,7 +34,6 @@ const Message = ({content, datetime, incoming, is_read}) => {
                             </div>
                         </div>
                     </div>
-
                </div>
     }
 
