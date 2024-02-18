@@ -3,6 +3,8 @@ import classes from './ChatBar.module.css'
 import ChatMiniature from "../ChatMiniature/ChatMiniature";
 import MyInput from "../input/MyInput";
 import Input from "../../new_UI/Input/Input";
+import Button from "../../new_UI/Button/Button";
+
 const ChatBar = ({chats, setCurrentChatId, chatId}) => {
 
     const backToChooseChat = useCallback((event) => {
@@ -31,10 +33,14 @@ const ChatBar = ({chats, setCurrentChatId, chatId}) => {
     return (
         <div className={classes.chatBar}>
 
-            <div className={classes.tempPlaceholder}>
+            <div className={classes.placeholder}>
+
+                <Input placeholder={'Search'} styles={classes.Input} onChange={(e) => {setQuery(e.target.value)}}></Input>
+                <Button styles={classes.newChatButton}>
+                    <img className={classes.addImg} alt={''} src={'http://192.168.0.12:8000/share/avatar/add.png'}/>
+                </Button>    
 
             </div>
-            <Input placeholder={'Search'} styles={classes.Input} onChange={(e) => {setQuery(e.target.value)}}></Input>
 
             <div className={classes.containerDiv}>
                 {chats.map((chat) => {
