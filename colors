@@ -1,0 +1,12 @@
+background:               #CDDFE9
+
+base:                     #F6F7F9
+base-hover:               #E4E7ED
+base-active:              #D1D6E0
+base-focuse:              #D1D6E0
+
+window-background:        #FFFFFF
+window-background-active: #00A4FF
+
+border:                   #ECEEF2
+divider:                  #ECEEF2

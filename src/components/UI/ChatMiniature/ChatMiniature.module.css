@@ -58,15 +58,24 @@
 
 
 .name{
-    margin-bottom: 5px;
     font-size: 20px;
 }
 
-.subMessage{
+.userData{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
+
+.chatData{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 5px;
+
+}
+
 
 .userText{
     width: 80%;
@@ -97,4 +106,20 @@
     height: 56px;
     width: 56px;
 
+}
+
+
+
+.read_indicator{
+    margin-right: 5px;
+    margin-left: 5px;
+    background: #00A4FF;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+}
+
+
+.hidden_element{
+    display: none;
 }

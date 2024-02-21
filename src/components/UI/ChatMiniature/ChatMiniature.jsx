@@ -4,8 +4,17 @@ import classes from "./ChatMiniature.module.css";
 const ChatMiniature = (chat, setCurrentChatId, chatId) => {
 
     const getLastMessageText = (chat) => {
+
+        let prefix = ''
+
+        if (chat.messages[0].incoming === false){
+            prefix = 'You: '
+        }
+
+        console.log(prefix)
+
         if (chat !== null && chat.messages.length !== 0){
-            return chat.messages[0].content
+            return prefix + chat.messages[0].content
         }
         return ''
     }
@@ -15,6 +24,13 @@ const ChatMiniature = (chat, setCurrentChatId, chatId) => {
             return chat.messages[0].datetime
         }
         return ''
+    }
+
+    const indicatorStyles = (chat) => {
+        if (chat.messages[0].incoming && (chat.messages[0].is_read === false)){
+            return classes.read_indicator
+        }
+        return classes.hidden_element
     }
 
 
@@ -39,10 +55,15 @@ const ChatMiniature = (chat, setCurrentChatId, chatId) => {
             </div>
 
             <div className={classes.textData}>
-                <div className={classes.name}>
-                    {chat.title}
+                <div className={classes.chatData}>
+                    <div className={classes.name}>
+                        {chat.title}
+                    </div>
+                    <div className={indicatorStyles(chat)}></div>
                 </div>
-                <div className={classes.subMessage}>
+                
+
+                <div className={classes.userData}>
                     <div className={classes.userText}>{getLastMessageText(chat)}</div>
                     <div className={classes.userTime}>{getReadableDate(getLastMessageTime(chat))}</div>
                 </div>

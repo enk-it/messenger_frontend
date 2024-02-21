@@ -1,7 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import classes from './ChatBar.module.css'
 import ChatMiniature from "../ChatMiniature/ChatMiniature";
-import MyInput from "../input/MyInput";
 import Input from "../../new_UI/Input/Input";
 import Button from "../../new_UI/Button/Button";
 
@@ -31,6 +30,7 @@ const ChatBar = ({chats, setCurrentChatId, chatId}) => {
 
 
     return (
+
         <div className={classes.chatBar}>
 
             <div className={classes.placeholder}>
@@ -47,6 +47,7 @@ const ChatBar = ({chats, setCurrentChatId, chatId}) => {
                     return ChatMiniature(chat, setCurrentChatId, chatId)
                 })}
             </div>
+
         </div>
     );
 };
