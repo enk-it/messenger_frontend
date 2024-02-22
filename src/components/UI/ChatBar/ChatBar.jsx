@@ -3,8 +3,18 @@ import classes from './ChatBar.module.css'
 import ChatMiniature from "../ChatMiniature/ChatMiniature";
 import Input from "../../new_UI/Input/Input";
 import Button from "../../new_UI/Button/Button";
+import StartChatForm from "../../new_UI/StartChatForm/StartChatForm";
+
+import {useChats} from "../../../hooks/useChats"
 
 const ChatBar = ({chats, setCurrentChatId, chatId}) => {
+
+
+    const [query, setQuery] = useState('');
+    const [lookingForNewChat, setLookingForNewChat] = useState(false);
+
+
+    const sortedAndFileteredChats = useChats(chats, query);
 
     const backToChooseChat = useCallback((event) => {
         if (event.key === 'Escape') {
@@ -14,9 +24,7 @@ const ChatBar = ({chats, setCurrentChatId, chatId}) => {
     }, []);
 
 
-    const [query, setQuery] = useState('')
 
-    // const sqChats = useChats(chats, true, query)
 
     useEffect(() => {
         // attach the event listener
@@ -29,24 +37,33 @@ const ChatBar = ({chats, setCurrentChatId, chatId}) => {
     }, [backToChooseChat]);
 
 
+
+    const findNewChat = (e) => {
+        console.log(e)
+    }
+
+
     return (
 
-        <div className={classes.chatBar}>
+        <div className={classes.chatBar} onClick={(e) => {setCurrentChatId(-1)}}>
 
-            <div className={classes.placeholder}>
+            <div className={classes.placeholder} onClick={(e) => {e.stopPropagation()}}>
 
                 <Input placeholder={'Search'} styles={classes.Input} onChange={(e) => {setQuery(e.target.value)}}></Input>
-                <Button styles={classes.newChatButton}>
+                <Button styles={classes.newChatButton} onClick={() => {setLookingForNewChat(true)}}>
                     <img className={classes.addImg} alt={''} src={'http://192.168.0.12:8000/share/avatar/add.png'}/>
                 </Button>    
 
             </div>
 
             <div className={classes.containerDiv}>
-                {chats.map((chat) => {
-                    return ChatMiniature(chat, setCurrentChatId, chatId)
+                {sortedAndFileteredChats.map((chat) => {
+                    return <ChatMiniature chat={chat} setCurrentChatId={setCurrentChatId} chatId={chatId}/>
                 })}
             </div>
+            
+            <StartChatForm state={lookingForNewChat} setState={setLookingForNewChat}/>
+            
 
         </div>
     );

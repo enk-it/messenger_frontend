@@ -1,26 +1,26 @@
 import {useMemo} from "react";
 
-export const useSortedChats = (chats, sort) => {
-    const sortedChats = useMemo(() => {
-        if (sort){
 
-            return [...chats].sort((a,b) => a[sort].localeCompare(b[sort]))
-        }
-        return chats
-    }, [sort, chats])
+
+
+export const useSortedChats = (chats) => {
+    const sortedChats = [...chats].sort(
+        (a,b) => {return b.messages[0].datetime - a.messages[0].datetime }
+        )
+
     return sortedChats;
 }
 
-export const useChats = (chats, sort, query) => {
+export const useChats = (chats, query) => {
 
-    const sortedChats = useSortedChats(chats, sort);
+    const sortedChats = useSortedChats(chats);
 
     const sortedAndSearchedChats = useMemo(() => {
 
             return sortedChats.filter(chat => chat.title.toLowerCase().includes(query.toLowerCase()))
 
         },
-        [chats, sort, query]
+        [chats, query]
     )
 
     return sortedAndSearchedChats;

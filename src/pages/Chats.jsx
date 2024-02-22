@@ -18,6 +18,8 @@ const Chats = () => {
 
     const [currentChatId, setCurrentChatId] = useState(-1);
 
+    const [oldMessageUpdated, setOldMessageUpdated] = useState(null)
+
     const [newMessage, setNewMessage] = useState(null)
     const [newChat, setNewChat] = useState(null)
 
@@ -47,6 +49,9 @@ const Chats = () => {
         gettingData();
     }, [ws]);
 
+
+
+
     useEffect(() => {
         updateMessage()
     }, [newMessage]);
@@ -54,6 +59,16 @@ const Chats = () => {
     useEffect(() => {
         updateChat()
     }, [newChat]);
+
+     useEffect(() => {
+        rewriteMessage()
+    }, [oldMessageUpdated]);
+
+    const rewriteMessage = () => {
+        
+    }
+
+
 
 
     const updateMessage = () => {
@@ -135,8 +150,6 @@ const Chats = () => {
         ws.current.onmessage = e => {                //подписка на получение данных по вебсокету
             const message = e.data
 
-
-
             const parsed_message = JSON.parse(message)
 
             const errors = ['Auth failed. Check your Authorization data', 'Fake token', 'Your token is disabled']
@@ -144,9 +157,10 @@ const Chats = () => {
                 ws.current.send('Bearer ' + token)
             }
             else if (parsed_message.info === "Auth succeeded"){
-                // ws.current.close()
+                console.log('WebSocket connection is estabilished succesfully')
             }
             else if (errors.includes(parsed_message.info)){
+                console.log(parsed_message.info)
             }
             else if (parsed_message.info === "newMessage"){
                 const new_message = parsed_message.message
@@ -155,6 +169,10 @@ const Chats = () => {
             else if (parsed_message.info === "newChat"){
                 const new_chat = parsed_message.chat
                 setNewChat(new_chat)
+            }
+            else if (parsed_message.info === "oldMessageUpdated"){
+                const omu = parsed_message.message
+                setOldMessageUpdated(omu)
             }
             // setData(message);
         };

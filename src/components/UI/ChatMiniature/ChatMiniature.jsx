@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from "./ChatMiniature.module.css";
 
-const ChatMiniature = (chat, setCurrentChatId, chatId) => {
+const ChatMiniature = ({chat, setCurrentChatId, chatId}) => {
 
     const getLastMessageText = (chat) => {
 
@@ -11,7 +11,6 @@ const ChatMiniature = (chat, setCurrentChatId, chatId) => {
             prefix = 'You: '
         }
 
-        console.log(prefix)
 
         if (chat !== null && chat.messages.length !== 0){
             return prefix + chat.messages[0].content
@@ -49,7 +48,7 @@ const ChatMiniature = (chat, setCurrentChatId, chatId) => {
 
 
     return (
-        <div className={getCurrentStyle()} onClick={() => {setCurrentChatId(chat.chat_id)}}>
+        <div className={getCurrentStyle()} onClick={(e) => {e.stopPropagation(); setCurrentChatId(chat.chat_id)}}>
             <div className={classes.pictureBackground}>
                 <img alt={''} src={'http://192.168.0.12:8000/share/avatar/' + chat.avatar_url} className={classes.avatar}></img>
             </div>

@@ -8,6 +8,16 @@ const Message = ({content, datetime, incoming, is_read}) => {
         return new Intl.DateTimeFormat('ru-RU', {hour: '2-digit', minute: '2-digit'}).format(timestamp * 1000)
     }
 
+    const renderIndicator = () => {
+        if (incoming === false){
+            return <div className={classes.read_indicator}></div>
+        }
+        else{
+            return <div></div>
+        }
+    }
+
+
     const renderMessage = () => {
         let stylesPlaceholder = null
         let stylesContainer = null
@@ -24,7 +34,7 @@ const Message = ({content, datetime, incoming, is_read}) => {
 
         return  <div className={stylesPlaceholder}>
                     <div className={stylesContainer}>
-                        <div className={classes.read_indicator}></div>
+                        {renderIndicator()}
                         <div className={classes.singleMessage}>
                             <div>
                                 {content}
