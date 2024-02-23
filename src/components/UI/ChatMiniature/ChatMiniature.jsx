@@ -7,15 +7,14 @@ const ChatMiniature = ({chat, setCurrentChatId, chatId}) => {
 
         let prefix = ''
 
-        if (chat.messages[0].incoming === false){
-            prefix = 'You: '
-        }
-
-
         if (chat !== null && chat.messages.length !== 0){
+            if (chat.messages[0].incoming === false) {
+                prefix = 'You: '
+            }
             return prefix + chat.messages[0].content
         }
-        return ''
+
+        return 'Empty chat'
     }
 
     const getLastMessageTime = (chat) => {
@@ -26,7 +25,7 @@ const ChatMiniature = ({chat, setCurrentChatId, chatId}) => {
     }
 
     const indicatorStyles = (chat) => {
-        if (chat.messages[0].incoming && (chat.messages[0].is_read === false)){
+        if (chat.messages.length !==0 && chat.messages[0].incoming && (chat.messages[0].is_read === false)){
             return classes.read_indicator
         }
         return classes.hidden_element
@@ -42,13 +41,29 @@ const ChatMiniature = ({chat, setCurrentChatId, chatId}) => {
             return classes.singleChatActive
         }
         return classes.singleChat
+    }
+
+
+    const chatChoosen = event => {
+        event.stopPropagation()
+        setCurrentChatId(chat.chat_id)
+
+        let unreadMessages = []
+
+        for (let i = 0; i < chat.messages.length; i++){
+            let message = chat.messages[i]
+            if (message.incoming && !message.is_read) {
+                console.log(message)
+            }
+        }
+        // send unread message ids in one request
 
     }
 
 
 
     return (
-        <div className={getCurrentStyle()} onClick={(e) => {e.stopPropagation(); setCurrentChatId(chat.chat_id)}}>
+        <div  className={getCurrentStyle()} onClick={chatChoosen}>
             <div className={classes.pictureBackground}>
                 <img alt={''} src={'http://192.168.0.12:8000/share/avatar/' + chat.avatar_url} className={classes.avatar}></img>
             </div>

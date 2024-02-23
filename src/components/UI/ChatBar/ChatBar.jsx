@@ -1,13 +1,14 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState, useRef} from 'react';
 import classes from './ChatBar.module.css'
 import ChatMiniature from "../ChatMiniature/ChatMiniature";
-import Input from "../../new_UI/Input/Input";
-import Button from "../../new_UI/Button/Button";
-import StartChatForm from "../../new_UI/StartChatForm/StartChatForm";
+import Input from "../Input/Input";
+import Button from "..//Button/Button";
+import StartChatForm from "../StartChatForm/StartChatForm";
 
 import {useChats} from "../../../hooks/useChats"
 
 const ChatBar = ({chats, setCurrentChatId, chatId}) => {
+    const ref = useRef(null);
 
 
     const [query, setQuery] = useState('');
@@ -24,9 +25,8 @@ const ChatBar = ({chats, setCurrentChatId, chatId}) => {
     }, []);
 
 
-
-
     useEffect(() => {
+
         // attach the event listener
         document.addEventListener('keydown', backToChooseChat);
 
@@ -34,18 +34,15 @@ const ChatBar = ({chats, setCurrentChatId, chatId}) => {
         return () => {
             document.removeEventListener('keydown', backToChooseChat);
         };
-    }, [backToChooseChat]);
+    }, []);
 
 
 
-    const findNewChat = (e) => {
-        console.log(e)
-    }
 
 
     return (
 
-        <div className={classes.chatBar} onClick={(e) => {setCurrentChatId(-1)}}>
+        <div className={classes.chatBar} onClick={(e) => {setCurrentChatId(-1)}} >
 
             <div className={classes.placeholder} onClick={(e) => {e.stopPropagation()}}>
 
@@ -57,9 +54,11 @@ const ChatBar = ({chats, setCurrentChatId, chatId}) => {
             </div>
 
             <div className={classes.containerDiv}>
-                {sortedAndFileteredChats.map((chat) => {
-                    return <ChatMiniature chat={chat} setCurrentChatId={setCurrentChatId} chatId={chatId}/>
-                })}
+                {
+                    sortedAndFileteredChats.map((chat) => {
+                    return <ChatMiniature chat={chat} setCurrentChatId={setCurrentChatId} chatId={chatId} />
+                    })
+                }
             </div>
             
             <StartChatForm state={lookingForNewChat} setState={setLookingForNewChat}/>

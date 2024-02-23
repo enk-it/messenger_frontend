@@ -1,31 +1,31 @@
 import React from 'react';
 import classes from "./UserMiniature.module.css";
-import MyButton from "../button/MyButton";
+import Button from "../Button/Button";
 
 
 const UserMiniature = ({user, startChat}) => {
 
     const online = (status) => {
         if (status === true){
-            return "Online"
+            return <div className={classes.greenStatus}></div>
         }
-        return 'Offline'
+        return <div className={classes.redStatus}></div>
     }
 
     return (
-        <div className={classes.user_miniature} onClick={() => {
-            // console.log(chat);
-        }}>
-            <div className={classes.subMessage}>
-                <div className={classes.pictureBackground}>
+        <div className={classes.userMiniature}>
+            <div className={classes.pictureBackground}>
                     <img src={'http://192.168.0.12:8000/share/avatar/' + user.avatar_url} className={classes.userPicture} alt=""/>
-                </div>
+            </div>
+            {online(user.is_online)}
+
+            <div className={classes.vericalContainer}>
                 <div className={classes.userText}>{user.username}</div>
                 <div className={classes.userText}>{'id' + user.user_id}</div>
-                <div className={classes.userText}>{online(user.is_online)}</div>
-
-                <MyButton onClick={() => {startChat(user.user_id)}}>Start Chat</MyButton>
             </div>
+
+
+            <Button styles={classes.startButton} onClick={() => {startChat(user.user_id)}}>Start Chat</Button>
         </div>
     );
 };

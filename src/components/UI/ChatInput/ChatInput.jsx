@@ -4,8 +4,8 @@ import send from './icons/send-message.png'
 import {useFetching} from "../../../hooks/useFetching";
 import PostService from "../../../API/PostService";
 import {AuthContext} from "../../../context";
-import Input from "../../new_UI/Input/Input";
-import Button from "../../new_UI/Button/Button";
+import Input from "../Input/Input";
+import Button from "../Button/Button";
 const ChatInput = ({chat}) => {
 
     const [message, setMessage] = useState('')
