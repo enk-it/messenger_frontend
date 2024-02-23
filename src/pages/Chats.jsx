@@ -18,8 +18,7 @@ const Chats = () => {
 
     const [currentChatId, setCurrentChatId] = useState(-1);
 
-    const [oldMessageUpdated, setOldMessageUpdated] = useState(null)
-
+    const [messageRead, setMessageRead] = useState(null)
     const [newMessage, setNewMessage] = useState(null)
     const [newChat, setNewChat] = useState(null)
 
@@ -62,13 +61,42 @@ const Chats = () => {
 
      useEffect(() => {
         rewriteMessage()
-    }, [oldMessageUpdated]);
+    }, [messageRead]);
 
     const rewriteMessage = () => {
+        if (messageRead === null){
+            return
+        }
+        
+        let newChats = []
+        let changedChat = null
+
+        for (let i = 0; i < chats.length; i++) {
+            if (chats[i].chat_id == messageRead.chatId){
+                changedChat = chats[i]
+            }
+            else{
+                newChats.push(chats[i])
+            }
+        }
+
+        if (changedChat.messages.length === 0){
+            return
+        }
+
+
+        for (let j = 0; j < changedChat.messages.length; j++){
+            if (messageRead.messagesIds.includes(changedChat.messages[j].message_id)){
+                changedChat.messages[j].is_read = true
+            }
+        }
+
+        newChats = [changedChat,...newChats]
+
+        // console.log('Чат после обновления', newChats)
+        setChats(newChats)
         
     }
-
-
 
 
     const updateMessage = () => {
@@ -127,21 +155,23 @@ const Chats = () => {
         let newChats = []
 
         // console.log(new_message)
-        for (let i = 0; i < chats.length; i++){
-            const old_chat = chats[i]
-            newChats = [old_chat,...newChats]
-        }
+        // for (let i = 0; i < chats.length; i++){
+        //     const old_chat = chats[i]
+        //     newChats = [old_chat,...newChats]
+        // }
 
-        newChats = [newChat,...newChats]
+        // newChats = [newChat,...newChats]
+        newChats = [newChat,...chats]
 
-        newChats.sort(
-            (m1, m2) => {
-                return m1.chat_id - m2.chat_id;
-            }
-        )
+        // newChats.sort(
+        //     (m1, m2) => {
+        //         return m1.chat_id - m2.chat_id;
+        //     }
+        // )
 
         setChats(newChats)
     }
+
 
 
     const gettingData = () => {
@@ -170,9 +200,9 @@ const Chats = () => {
                 const new_chat = parsed_message.chat
                 setNewChat(new_chat)
             }
-            else if (parsed_message.info === "oldMessageUpdated"){
-                const omu = parsed_message.message
-                setOldMessageUpdated(omu)
+            else if (parsed_message.info === "messagesRead"){
+                const readData = {chatId: parsed_message.chat_id, messagesIds: parsed_message.messages_ids}
+                setMessageRead(readData)
             }
             // setData(message);
         };

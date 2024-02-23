@@ -11,7 +11,7 @@ const Message = ({content, datetime, incoming, is_read}) => {
     }
 
     const renderIndicator = () => {
-        if (incoming === false){
+        if (incoming === false && is_read === false){
             return <div className={classes.read_indicator}></div>
         }
         else{

@@ -74,6 +74,25 @@ export default class PostService {
 
     }
 
+    static async readMessage(token, chatId, messagesIds, usersIds) {
+        try {
+            const response = await axios.post(server_path + 'read_message/', {
+                chat_id:chatId,
+                messages_ids:messagesIds,
+                users_ids:usersIds
+            },
+            {
+                headers: {'Authorization': `Bearer ${token}`}
+            }
+        )
+        return response
+        }
+        catch (error){
+            return error.response
+        }
+
+    }
+
 
 
 }

@@ -4,8 +4,8 @@ import {AuthContext} from "../../../context";
 
 import Message from "../Message/Message";
 
-const ChatMessages = ({chat}) => {
-    let messages = []
+const ChatMessages = ({messages}) => {
+    let messagesToRender = []
 
     const getReadableDate = (timestamp) => {
         // return new Intl.DateTimeFormat('ru-RU', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(timestamp * 1000)
@@ -13,11 +13,11 @@ const ChatMessages = ({chat}) => {
     }
 
     const renderMessages = () => {
-            for (let i = chat.messages.length - 1; i >= 0 ; i--){
-                messages.push(<Message content={chat.messages[i].content} datetime={chat.messages[i].datetime} incoming={chat.messages[i].incoming} is_read={false}/>);
+            for (let i = messages.length - 1; i >= 0 ; i--){
+                messagesToRender.push(<Message content={messages[i].content} datetime={messages[i].datetime} incoming={messages[i].incoming} is_read={messages[i].is_read}/>);
             }
 
-            return messages
+            return messagesToRender
     }
 
 

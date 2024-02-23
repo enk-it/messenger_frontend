@@ -1,7 +1,13 @@
-import React from 'react';
+import React, {useContext, useEffect, useState, useRef, useCallback} from 'react';
 import classes from "./ChatMiniature.module.css";
+import {AuthContext} from "../../../context";
+import {useUsers} from "../../../hooks/useUsers"
+
 
 const ChatMiniature = ({chat, setCurrentChatId, chatId}) => {
+
+    
+
 
     const getLastMessageText = (chat) => {
 
@@ -41,23 +47,14 @@ const ChatMiniature = ({chat, setCurrentChatId, chatId}) => {
             return classes.singleChatActive
         }
         return classes.singleChat
-    }
+    }   
 
 
     const chatChoosen = event => {
         event.stopPropagation()
         setCurrentChatId(chat.chat_id)
 
-        let unreadMessages = []
-
-        for (let i = 0; i < chat.messages.length; i++){
-            let message = chat.messages[i]
-            if (message.incoming && !message.is_read) {
-                console.log(message)
-            }
-        }
-        // send unread message ids in one request
-
+        
     }
 
 
