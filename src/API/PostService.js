@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const server_path = 'http://192.168.0.12:8000/' //debug
+// const server_path = 'http://192.168.0.12:8000/' //debug
+const server_path = 'http://messanger.enkit.ru:80/' //debug
 // const server_path = 'http://192.168.0.17:8000/' //production
 
 
@@ -92,7 +93,4 @@ export default class PostService {
         }
 
     }
-
-
-
 }

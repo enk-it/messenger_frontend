@@ -49,7 +49,7 @@ const StartChatForm = ({state, setState}) => {
 
     useEffect(() => {
         fetchUsers(token)
-    }, [])
+    }, [state])
 
 
     const handleKeyDown = event => {
