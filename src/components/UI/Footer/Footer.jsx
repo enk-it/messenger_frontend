@@ -4,9 +4,22 @@ import classes from './Footer.module.css'
 
 
 const Footer = () => {
+
+        const [state, setState] = useState(true)
+
+        const getStyles = (isVisible) => {
+            if (isVisible){
+                return classes.footer
+            }
+            else{
+                return classes.hidden
+            }
+        }
+
+
 	    return (
 
-        <div className={classes.footer}>
+        <div className={getStyles(state)} onClick={() => {setState(false)}}>
 
     	    <div className={classes.horizontalContainer}>
     	    	<div className={classes.verticalContainer}>

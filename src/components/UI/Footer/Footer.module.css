@@ -3,7 +3,9 @@
 	bottom: 0;
 	right: 0;
 	left: 0;
-	height: 20%;
+	height: fit-content();
+	max-height: 50%;
+	padding: 20px;
 	background: white;
 	display: flex;
 	flex-direction: column;
@@ -31,4 +33,8 @@
 	width: 50%;
 	margin-top: 15px;
 	margin-bottom: 15px;
+}
+
+.hidden{
+	display: none;
 }
