@@ -44,7 +44,7 @@ const Message = ({content, datetime, incoming, is_read}) => {
 
 
 
-    return  <div className={stylesPlaceholder}>
+    return  <p className={stylesPlaceholder}>
                     <div className={stylesContainer}>
                         {renderIndicator()}
                         <div className={classes.singleMessage}>
@@ -56,7 +56,7 @@ const Message = ({content, datetime, incoming, is_read}) => {
                             </div>
                         </div>
                     </div>
-               </div>
+               </p>
 };
 
 export default Message;
