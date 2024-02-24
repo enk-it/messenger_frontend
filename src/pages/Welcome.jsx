@@ -1,9 +1,14 @@
 import React from 'react';
 import AuthForm from "../components/UI/AuthForm/AuthForm";
+import Footer from "../components/UI/Footer/Footer";
 
 const Welcome = () => {
     return (
-        <AuthForm/>
+        <div>
+            <AuthForm/>
+            <Footer/>
+        </div>
+        
     );
 };
 
