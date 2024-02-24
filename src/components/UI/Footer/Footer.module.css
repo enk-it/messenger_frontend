@@ -1,0 +1,34 @@
+.footer{
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	height: 20%;
+	background: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.horizontalContainer{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly
+
+}
+
+.verticalContainer{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	width: 30%;
+}
+
+.divider{
+	width: 50%;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
