@@ -5,7 +5,7 @@ import PostService from "../API/PostService";
 import Chat from "../components/UI/Chat/Chat";
 
 //const server_path = 'ws://192.168.0.12:8000/' //debug
-const server_path = 'wss://messenger.enkit.ru:80/api_ws/' //production
+const server_path = 'wss://messenger.enkit.ru:443/api_ws/' //production
 // const server_path = 'ws://192.168.0.17:8000/' //production
 
 
