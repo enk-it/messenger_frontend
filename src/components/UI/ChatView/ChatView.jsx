@@ -42,7 +42,7 @@ const ChatView = ({chat}) => {
                 
             }
         }
-        console.log('Текущие непрочитанные соощбения: ', chat.chat_id, unreadMessages)
+        //console.log('Текущие непрочитанные соощбения: ', chat.chat_id, unreadMessages)
         if (unreadMessages.length !== 0){
             fetchReadMessage(token, chat.chat_id, unreadMessages, messagesOwnersIds)
         }
