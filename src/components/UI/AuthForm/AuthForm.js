@@ -37,7 +37,7 @@ const AuthForm = () => {
                 setError('Network error. Check your Internet Connetion')
             }
             else{
-                console.log(e)
+                // console.log(e)
                 setError(e.response.data.detail)
             }
         }
@@ -57,7 +57,7 @@ const AuthForm = () => {
                 setError('Network error. Check your Internet Connetion')
             }
             else{
-                console.log(e)
+                // console.log(e)
                 setError(e.response.data.detail)
             }
         }
