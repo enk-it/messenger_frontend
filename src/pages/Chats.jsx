@@ -48,7 +48,6 @@ const Chats = () => {
     const establishWebSocket = () => {
         if (ws.current === null){
             ws.current = new WebSocket(server_path + "websocket_connection/"); // создаем ws соединение
-            
             console.log('WebSocket Connected')
         }
     }
@@ -56,7 +55,7 @@ const Chats = () => {
     useEffect(() => {
         establishWebSocket()
         gettingData();
-    }, [ws]);
+    }, [ws.current]);
 
 
     useEffect(() => {
@@ -184,7 +183,7 @@ const Chats = () => {
     const gettingData = () => {
         if (!ws.current) return;
 
-        ws.current.onclose = () => {ws.current = null}
+        ws.current.onclose = () => {ws.current = null; console.log('WebSocket Disconnected')}
         ws.current.onmessage = e => {                //подписка на получение данных по вебсокету
             const message = e.data
 
