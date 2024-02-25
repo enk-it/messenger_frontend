@@ -1,21 +1,36 @@
 import axios from "axios";
+import { getSHA256Hash } from "boring-webcrypto-sha256";
+
 
 // const server_path = 'http://192.168.0.12:8000/' //debug
 const server_path = 'https://messenger.enkit.ru:443/api/' //debug
 // const server_path = 'http://192.168.0.17:8000/' //production
 
 
+const getSHA256Hash = async (input) => {
+  const textAsBuffer = new TextEncoder().encode(input);
+  const hashBuffer = await window.crypto.subtle.digest("SHA-256", textAsBuffer);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  const hash = hashArray
+    .map((item) => item.toString(16).padStart(2, "0"))
+    .join("");
+  return hash;
+};
+
+
 export default class PostService {
 
 
     static async login(username, password, client_id){
-        const response = await axios.post(server_path + 'login/', {username:username, hashed_password:password, client_id:client_id})
+        hashed_password = await getSHA256Hash(password)
+        const response = await axios.post(server_path + 'login/', {username:username, hashed_password:hashed_password, client_id:client_id})
         return response
     }
 
 
     static async register(username, password, client_id){
-        const response = await axios.post(server_path + 'register/', {username:username, hashed_password:password, client_id: client_id})
+        hashed_password = await getSHA256Hash(password)
+        const response = await axios.post(server_path + 'register/', {username:username, hashed_password:hashed_password, client_id: client_id})
         return response
     }
 

@@ -20,6 +20,8 @@
 
 .messagePlaceholderLeft{
     padding-right: 6px;
+    padding-left: 36px;
+
     width: 100%;
     display: flex;
     justify-content: flex-end;
@@ -27,6 +29,7 @@
 }
 
 .messagePlaceholderRight{
+    padding-right: 36px;
     width: 100%;
     display: flex;
     justify-content: flex-start;
