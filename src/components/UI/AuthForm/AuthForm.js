@@ -8,7 +8,7 @@ import PostService from "../../../API/PostService";
 import Loader from "../Loader/Loader";
 
 const AuthForm = () => {
-    
+
     const [lastError, setError] = useState('')
 
     const [registration, setRegistration] = useState(false)
@@ -38,7 +38,7 @@ const AuthForm = () => {
             }
             else{
                 console.log(e)
-                setError(e.detail)
+                setError(e.response.data.detail)
             }
         }
     }
@@ -58,7 +58,7 @@ const AuthForm = () => {
             }
             else{
                 console.log(e)
-                setError(e.detail)
+                setError(e.response.data.detail)
             }
         }
     }
