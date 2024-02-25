@@ -23,6 +23,7 @@ const Chats = () => {
     const [newMessage, setNewMessage] = useState(null)
     const [newChat, setNewChat] = useState(null)
 
+
     const [fetchChats, isChatsLoading, chatsError] = useFetching(async (token) => {
 
         // console.log(token, 'That is the token i m trying to auth')
@@ -44,12 +45,19 @@ const Chats = () => {
     })
 
 
+    const establishWebSocket = () => {
+        if (ws.current === null){
+            ws.current = new WebSocket(server_path + "websocket_connection/"); // создаем ws соединение
+            ws.current.onclose = () => {ws.current = null}
+            console.log('WebSocket Connected')
+        }
+    }
+
+
     useEffect(() => {
-        ws.current = new WebSocket(server_path + "websocket_connection/"); // создаем ws соединение
+        establishWebSocket()
         gettingData();
     }, [ws]);
-
-
 
 
     useEffect(() => {
