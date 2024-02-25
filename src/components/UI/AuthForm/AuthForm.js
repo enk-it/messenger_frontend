@@ -8,6 +8,8 @@ import PostService from "../../../API/PostService";
 import Loader from "../Loader/Loader";
 
 const AuthForm = () => {
+    
+    const [lastError, setError] = useState('')
 
     const [registration, setRegistration] = useState(false)
 
@@ -32,10 +34,11 @@ const AuthForm = () => {
         }
         catch (e){
             if (e.code === "ERR_NETWORK"){
-                alert('Network error. Check your Internet Connetion')
+                setError('Network error. Check your Internet Connetion')
             }
             else{
-                alert(e)
+                console.log(e)
+                setError(e.detail)
             }
         }
     }
@@ -51,15 +54,15 @@ const AuthForm = () => {
         }
         catch (e){
             if (e.code === "ERR_NETWORK"){
-                alert('Network error. Check your Internet Connetion')
+                setError('Network error. Check your Internet Connetion')
             }
             else{
-                alert(e)
+                console.log(e)
+                setError(e.detail)
             }
         }
     }
 
-    const [lastError, setError] = useState('')
 
     const [fetchLogin, isLoadingLogin] = useFetching(callbackLogin, setError)
     const [fetchRegister, isLoadingRegister] = useFetching(callbackRegister, setError)
