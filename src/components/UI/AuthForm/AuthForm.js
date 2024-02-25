@@ -34,6 +34,9 @@ const AuthForm = () => {
             if (e.code === "ERR_NETWORK"){
                 alert('Network error. Check your Internet Connetion')
             }
+            else{
+                alert(e)
+            }
         }
     }
 
@@ -49,6 +52,9 @@ const AuthForm = () => {
         catch (e){
             if (e.code === "ERR_NETWORK"){
                 alert('Network error. Check your Internet Connetion')
+            }
+            else{
+                alert(e)
             }
         }
     }
