@@ -183,7 +183,7 @@ const Chats = () => {
     const gettingData = () => {
         if (!ws.current) return;
 
-        ws.current.onclose = () => {ws.current = null; console.log('WebSocket Disconnected')}
+        ws.current.onclose = () => {ws.current = null; setCurrentChatId(-1); console.log('WebSocket Disconnected')}
         ws.current.onmessage = e => {                //подписка на получение данных по вебсокету
             const message = e.data
 
