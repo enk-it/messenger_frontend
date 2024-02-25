@@ -11,14 +11,14 @@ export default class PostService {
 
 
     static async login(username, password, client_id){
-        hashed_password = await getSHA256Hash(password)
+        let hashed_password = await getSHA256Hash(password)
         const response = await axios.post(server_path + 'login/', {username:username, hashed_password:hashed_password, client_id:client_id})
         return response
     }
 
 
     static async register(username, password, client_id){
-        hashed_password = await getSHA256Hash(password)
+        let hashed_password = await getSHA256Hash(password)
         const response = await axios.post(server_path + 'register/', {username:username, hashed_password:hashed_password, client_id: client_id})
         return response
     }
