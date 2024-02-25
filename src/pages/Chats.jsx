@@ -13,7 +13,9 @@ const Chats = () => {
 
     const {token, setToken} = useContext(AuthContext)
 
-    const ws = useRef(null);
+    // const ws = useRef(null);
+
+    const [ws, setWs] = useState(null)
 
     const [chats, setChats] = useState([])
 
@@ -46,8 +48,8 @@ const Chats = () => {
 
 
     const establishWebSocket = () => {
-        if (ws.current === null){
-            ws.current = new WebSocket(server_path + "websocket_connection/"); // создаем ws соединение
+        if (ws === null){
+            setWs(new WebSocket(server_path + "websocket_connection/")); // создаем ws соединение
             console.log('WebSocket Connected')
         }
     }
@@ -55,7 +57,7 @@ const Chats = () => {
     useEffect(() => {
         establishWebSocket()
         gettingData();
-    }, [ws.current]);
+    }, [ws]);
 
 
     useEffect(() => {
@@ -181,17 +183,17 @@ const Chats = () => {
 
 
     const gettingData = () => {
-        if (!ws.current) return;
+        if (!ws) return;
 
-        ws.current.onclose = () => {ws.current = null; setCurrentChatId(-1); console.log('WebSocket Disconnected')}
-        ws.current.onmessage = e => {                //подписка на получение данных по вебсокету
+        ws.onclose = () => {setWs(null); console.log('WebSocket Disconnected')}
+        ws.onmessage = e => {                //подписка на получение данных по вебсокету
             const message = e.data
 
             const parsed_message = JSON.parse(message)
 
             const errors = ['Auth failed. Check your Authorization data', 'Fake token', 'Your token is disabled']
             if (parsed_message.info === "Provide your Bearer token"){
-                ws.current.send('Bearer ' + token)
+                ws.send('Bearer ' + token)
             }
             else if (parsed_message.info === "Auth succeeded"){
                 console.log('WebSocket connection is estabilished succesfully')
