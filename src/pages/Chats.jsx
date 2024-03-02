@@ -11,6 +11,17 @@ const server_path = 'wss://messenger.enkit.ru:443/api_ws/' //production
 
 
 const Chats = () => {
+    const detectMobile = () => {
+        let x = window.innerWidth;
+        let y = window.innerHeight;
+        let ratio = x / y
+        if (ratio < 0.65){
+            return true
+        }
+        else{
+            return false
+        }
+    }
 
     const {token, setToken} = useContext(AuthContext)
 
@@ -29,17 +40,7 @@ const Chats = () => {
     const [isMobile, setIsMobile] = useState(detectMobile())
 
 
-    const detectMobile = () => {
-        let x = window.innerWidth;
-        let y = window.innerHeight;
-        let ratio = x / y
-        if (ratio < 0.65){
-            return true
-        }
-        else{
-            return false
-        }
-    }
+    
 
 
 
