@@ -1,11 +1,23 @@
 import React from 'react';
 import classes from './ChatHeader.module.css'
-const ChatHeader = ({title}) => {
+import Button from "..//Button/Button";
+
+const ChatHeader = ({setCurrentChatId, title}) => {
 
 
     return (
         <div className={classes.chatHeader}>
-            <div>{title}</div>
+            {
+                setCurrentChatId !== null
+                ?
+                <Button styles={classes.backButton} onClick={() => {setCurrentChatId(-1)}}>
+                    <img className={classes.backButton} alt={''} src={'https://messenger.enkit.ru/api/share/avatar/back.png'}/>
+                </Button>
+                :
+                <div></div>  
+            }
+              
+            <div className={classes.title}>{title}</div>
         </div>
     );
 };

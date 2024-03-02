@@ -7,7 +7,7 @@ import {AuthContext} from "../../../context";
 import {useFetching} from "../../../hooks/useFetching";
 import PostService from "../../../API/PostService";
 
-const ChatView = ({chat}) => {
+const ChatView = ({chat, setCurrentChatId}) => {
 
     const {isAuth, setIsAuth} = useContext(AuthContext)
     const {token, setToken} = useContext(AuthContext)
@@ -67,12 +67,12 @@ const ChatView = ({chat}) => {
     const renderChats = () => {
         if (chat === null || chat === undefined){
             return <div className={classes.chat}>
-                <ChatHeader title={'No chat selected'}/>
+                <ChatHeader setCurrentChatId={null} title={'No chat selected'}/>
             </div>
         }
         else{
             return <div className={classes.chat}>
-                <ChatHeader title={chat.title}/>
+                <ChatHeader setCurrentChatId={setCurrentChatId} title={chat.title}/>
                 <ChatMessages messages={chat.messages}/>
                 <ChatInput chat={chat}/>
             </div>

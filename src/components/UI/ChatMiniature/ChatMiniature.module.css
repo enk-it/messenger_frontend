@@ -13,6 +13,8 @@
 
     cursor: pointer;
 
+    overflow: clip;
+
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
     -moz-user-select: none; /* Old versions of Firefox */
@@ -39,6 +41,8 @@
     flex-direction: row;
 
     cursor: pointer;
+
+    overflow: clip;
 
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */

@@ -3,6 +3,7 @@ import {AuthContext} from "../context";
 import {useFetching} from "../hooks/useFetching";
 import PostService from "../API/PostService";
 import Chat from "../components/UI/Chat/Chat";
+import MobileChat from "../components/UI/MobileChat/MobileChat";
 
 //const server_path = 'ws://192.168.0.12:8000/' //debug
 const server_path = 'wss://messenger.enkit.ru:443/api_ws/' //production
@@ -24,6 +25,22 @@ const Chats = () => {
     const [messageRead, setMessageRead] = useState(null)
     const [newMessage, setNewMessage] = useState(null)
     const [newChat, setNewChat] = useState(null)
+
+    const [isMobile, setIsMobile] = useState(false)
+
+
+    const detectMobile = () => {
+        let x = window.innerWidth;
+        let y = window.innerHeight;
+        let ratio = x / y
+        if (ratio < 0.65){
+            setIsMobile(true)
+        }
+        else{
+            setIsMobile(false)
+        }
+    }
+
 
 
     const [fetchChats, isChatsLoading, chatsError] = useFetching(async (token) => {
@@ -53,24 +70,6 @@ const Chats = () => {
             console.log('WebSocket Connected')
         }
     }
-
-    useEffect(() => {
-        establishWebSocket()
-        gettingData();
-    }, [ws]);
-
-
-    useEffect(() => {
-        updateMessage()
-    }, [newMessage]);
-
-    useEffect(() => {
-        updateChat()
-    }, [newChat]);
-
-     useEffect(() => {
-        rewriteMessage()
-    }, [messageRead]);
 
     const rewriteMessage = () => {
         if (messageRead === null){
@@ -217,16 +216,43 @@ const Chats = () => {
         };
     }
 
+    useEffect(() => {
+        establishWebSocket()
+        gettingData();
+    }, [ws]);
+
+
+    useEffect(() => {
+        updateMessage()
+    }, [newMessage]);
+
+    useEffect(() => {
+        updateChat()
+    }, [newChat]);
+
+     useEffect(() => {
+        rewriteMessage()
+    }, [messageRead]);
 
 
     useEffect(() => {
         fetchChats(token)
     }, [])
+    
 
-
-
+    useEffect(() => {
+        window.addEventListener('resize', detectMobile)
+    }, [])
+    
     return (
+    
+        isMobile
+        ?
+        <MobileChat chats={chats} currentChatId={currentChatId} setCurrentChatId={setCurrentChatId} />
+        :
         <Chat chats={chats} currentChatId={currentChatId} setCurrentChatId={setCurrentChatId} />
+
+    
     );
 };
 

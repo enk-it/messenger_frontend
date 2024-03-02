@@ -23,7 +23,7 @@ const Chat = ({chats, currentChatId, setCurrentChatId}) => {
         <div className={classes.container}>
             <div className={classes.chat}>
                 <ChatBar chats={chats} setCurrentChatId={setCurrentChatId} chatId={currentChatId}/>
-                <ChatView chat={currentChat}/>
+                <ChatView chat={currentChat} setCurrentChatId={setCurrentChatId}/>
             </div>
         </div>
 

@@ -1,7 +1,7 @@
 .chatHeader{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 
     text-align: center;
 
@@ -24,3 +24,18 @@
 
 }
 
+
+.backButton{
+    width: 48px;
+    height: 48px;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F6F7F9;
+
+}
+
+.title{
+    width: 100%;
+}
