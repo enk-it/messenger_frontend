@@ -237,14 +237,14 @@ const Chats = () => {
     }, [])
     
 
-    useEffect(() => {
-        window.addEventListener('resize', () => {
-            let currentMode = detectMobile()
-            if (isMobile !== currentMode){
-                setIsMobile(currentMode)
-            }
-        })
-    }, [])
+    // useEffect(() => {
+    //     window.addEventListener('resize', () => {
+    //         let currentMode = detectMobile()
+    //         if (isMobile !== currentMode){
+    //             setIsMobile(currentMode)
+    //         }
+    //     })
+    // }, [])
     
     return (
     
