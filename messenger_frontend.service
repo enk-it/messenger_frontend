@@ -4,7 +4,7 @@ After=multi-user.target
 
 [Service]
 Type=simple
-WorkingDirectory=/home/jakiro/messenger_frontend/
+WorkingDirectory=/home/messenger_frontend/
 ExecStart=serve build
 Restart=always
 

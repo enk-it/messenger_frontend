@@ -185,7 +185,7 @@ const Chats = () => {
     const gettingData = () => {
         if (!ws) return;
 
-        ws.onclose = () => {setWs(null); console.log('WebSocket Disconnected')}
+        ws.onclose = () => {setWs(null);}
         ws.onmessage = e => {                //подписка на получение данных по вебсокету
             const message = e.data
 
@@ -196,7 +196,7 @@ const Chats = () => {
                 ws.send('Bearer ' + token)
             }
             else if (parsed_message.info === "Auth succeeded"){
-                console.log('WebSocket connection is estabilished succesfully')
+                console.log('WebSocket auth succeeded')
             }
             else if (errors.includes(parsed_message.info)){
                 console.log(parsed_message.info)
