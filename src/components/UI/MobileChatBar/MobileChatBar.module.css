@@ -1,0 +1,60 @@
+.chatBar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: 100%;
+
+    width: 100%;
+
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 20px;
+
+
+    background: #FFFFFF;
+
+    border: 1px solid #ECEEF2;
+    border-top: 0;
+}
+
+.containerDiv{
+    overflow-y: scroll;
+    height: calc(100% - 64px);
+    width: 100%;
+}
+
+.containerDiv::-webkit-scrollbar {
+    display: none;
+}
+
+
+.Input{
+    width: 100%;
+    height: 48px;
+    font-size: 22px;
+    padding: 10px;
+    border-radius: 48px;
+}
+
+.placeholder{
+    background: white;
+    height: 64px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.newChatButton{
+    aspect-ratio: 1;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F6F7F9;
+}
+
+.addImg{
+    width: 48px;
+    height: 48px;
+}
