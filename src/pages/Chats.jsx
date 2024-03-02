@@ -26,7 +26,7 @@ const Chats = () => {
     const [newMessage, setNewMessage] = useState(null)
     const [newChat, setNewChat] = useState(null)
 
-    const [isMobile, setIsMobile] = useState(false)
+    const [isMobile, setIsMobile] = useState(detectMobile())
 
 
     const detectMobile = () => {
@@ -34,10 +34,10 @@ const Chats = () => {
         let y = window.innerHeight;
         let ratio = x / y
         if (ratio < 0.65){
-            setIsMobile(true)
+            return true
         }
         else{
-            setIsMobile(false)
+            return false
         }
     }
 
@@ -241,7 +241,7 @@ const Chats = () => {
     
 
     useEffect(() => {
-        window.addEventListener('resize', detectMobile)
+        window.addEventListener('resize', () => {setIsMobile(detectMobile())})
     }, [])
     
     return (
