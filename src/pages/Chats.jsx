@@ -40,10 +40,6 @@ const Chats = () => {
     const [isMobile, setIsMobile] = useState(detectMobile())
 
 
-    
-
-
-
     const [fetchChats, isChatsLoading, chatsError] = useFetching(async (token) => {
 
         // console.log(token, 'That is the token i m trying to auth')
@@ -242,7 +238,12 @@ const Chats = () => {
     
 
     useEffect(() => {
-        window.addEventListener('resize', () => {setIsMobile(detectMobile())})
+        window.addEventListener('resize', () => {
+            let currentMode = detectMobile()
+            if (isMobile !== currentMode){
+                setIsMobile(currentMode)
+            }
+        })
     }, [])
     
     return (
