@@ -33,22 +33,11 @@ const Message = ({content, datetime, incoming, is_read}) => {
 
 
 
-    // function inView() {
-    // if (messageBody.current.getBoundingClientRect().bottom <= window.innerHeight) {
-    //         console.log("in view");
-    //     }
-    // }
-
-    // useEffect(() => {inView()}, [])
-
-
-
-
     return  <p className={stylesPlaceholder}>
                     <div className={stylesContainer}>
                         {renderIndicator()}
                         <div className={classes.singleMessage}>
-                            <div>
+                            <div className={classes.text}>
                                 {content}
                             </div>
                             <div className={classes.messageTime}>

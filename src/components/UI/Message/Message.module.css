@@ -12,10 +12,13 @@
 }
 
 .messageTime{
-    margin-left: 4px;
-    margin-right: 4px;
+    color: #4D4D4D;
     font-size: 10px;
-    padding-top: 6px;
+    white-space: nowrap;
+    padding-right: 4px;
+    padding-left: 4px;
+    display: flex;
+    align-items: flex-end;
 }
 
 .messagePlaceholderLeft{
@@ -59,5 +62,6 @@
 
 
 
-
-
+.text{
+    text-align: start;
+}
