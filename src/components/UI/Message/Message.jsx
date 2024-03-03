@@ -21,14 +21,17 @@ const Message = ({content, datetime, incoming, is_read}) => {
 
     let stylesPlaceholder = null
     let stylesContainer = null
+    let stylesMessage = null
 
     if (incoming === true){
         stylesPlaceholder = classes.messagePlaceholderRight
         stylesContainer = classes.containerRight
+        stylesMessage = classes.singleMessage + ' ' + classes.messageIncoming
     }
     else{
         stylesPlaceholder = classes.messagePlaceholderLeft
         stylesContainer = classes.containerLeft
+        stylesMessage = classes.singleMessage + ' ' + classes.messageOutcoming
     }
 
 
@@ -38,7 +41,7 @@ const Message = ({content, datetime, incoming, is_read}) => {
                         <div className={classes.indicatorContainer}>
                             {renderIndicator()}
                         </div>
-                        <div className={classes.singleMessage}>
+                        <div className={stylesMessage}>
                             <div className={classes.text}>
                                 {content}
                             </div>
