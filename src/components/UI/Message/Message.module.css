@@ -23,7 +23,7 @@
 
 .messagePlaceholderLeft{
     padding-right: 6px;
-    padding-left: 36px;
+    padding-left: 64px;
 
     width: 100%;
     display: flex;
@@ -32,7 +32,7 @@
 }
 
 .messagePlaceholderRight{
-    padding-right: 36px;
+    padding-right: 64px;
     width: 100%;
     display: flex;
     justify-content: flex-start;
@@ -46,6 +46,7 @@
     height: 10px;
     border-radius: 5px;
     margin: 5px;
+    padding: 5px;
 }
 
 .containerRight{
