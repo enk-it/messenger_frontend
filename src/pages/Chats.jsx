@@ -25,8 +25,6 @@ const Chats = () => {
 
     const {token, setToken} = useContext(AuthContext)
 
-    // const ws = useRef(null);
-
     const [ws, setWs] = useState(null)
 
     const [chats, setChats] = useState([])
@@ -35,40 +33,48 @@ const Chats = () => {
 
     const [messageRead, setMessageRead] = useState(null)
     const [newMessage, setNewMessage] = useState(null)
+    const [oldMessages, setOldMessages] = useState(null)
     const [newChat, setNewChat] = useState(null)
 
     const [isMobile, setIsMobile] = useState(detectMobile())
 
 
     const [fetchChats, isChatsLoading, chatsError] = useFetching(async (token) => {
-
-        // console.log(token, 'That is the token i m trying to auth')
-
         const response = await PostService.getChats(token)
-        // console.log(response.data.chats, 'the way it comes from backend')
 
         let backend_chats = response.data.chats
-
 
         backend_chats.sort(
             (m1, m2) => {
                 return m1.chat_id - m2.chat_id;
             }
         )
-
         setChats(backend_chats);
-        // console.log(response.data.chats, 'chats data from backend')
     })
+
+
+    const [fetchOlderMessages, isOlderMessagesLoading, olderMessagesError] = useFetching(async (token, chat_id, message_id) => {
+        const response = await PostService.getOlderMessages(token, chat_id, message_id)
+
+        let olderMessages = response.data.messages
+
+        //console.log(olderMessages, 'older messages from backend')
+        if (olderMessages.length !== 0) {
+            setOldMessages(olderMessages)
+        }
+
+    })
+
 
 
     const establishWebSocket = () => {
         if (ws === null){
             setWs(new WebSocket(server_path + "websocket_connection/")); // создаем ws соединение
-            console.log('WebSocket Connected')
+            // console.log('WebSocket Connected')
         }
     }
 
-    const rewriteMessage = () => {
+    const updateMessagesOnRead = () => {
         if (messageRead === null){
             return
         }
@@ -98,44 +104,26 @@ const Chats = () => {
 
         newChats = [changedChat,...newChats]
 
-        // console.log('Чат после обновления', newChats)
         setChats(newChats)
         
     }
 
 
-    const updateMessage = () => {
+    const updateChatOnNewMessage = () => {
         if (chats.length === 0 || newMessage===null){
-            // console.log(newMessage)
-            // console.log(chats)
             return
         }
-
-        // console.log(newMessage)
 
         let newChats = []
 
 
-        // console.log(new_message)
         for (let i = 0; i < chats.length; i++){
             const updatedChat = chats[i]
 
             if (chats[i].chat_id === newMessage.chat_id){
-                // console.log( [new_message, ...chats[i].messages], 'asdasdasd')
-
-                // chats[i].messages = [new_message, ...chats[i].messages]
-
                 updatedChat.messages.unshift(newMessage)
-                // console.log( 'asd')
-                // console.log( chats[i])
-
-                // chats[i].messages.unshift(new_message)
-
             }
-
             newChats = [updatedChat,...newChats]
-            // updatedChats.push(updatedChat)
-
         }
 
         newChats.sort(
@@ -148,6 +136,36 @@ const Chats = () => {
     }
 
 
+    const updateMessages = () => {
+        if (chats.length === 0 || oldMessages===null){
+            return
+        }
+
+        let newChats = []
+
+
+        for (let i = 0; i < chats.length; i++){
+            const updatedChat = chats[i]
+
+            if (chats[i].chat_id === oldMessages[0].chat_id){
+                updatedChat.messages = [...updatedChat.messages, ...oldMessages]
+            }
+            newChats = [updatedChat,...newChats]
+        }
+
+        newChats.sort(
+            (m1, m2) => {
+                return m1.chat_id - m2.chat_id;
+            }
+        )
+
+
+        //console.log(newChats, 'new chats')
+
+        setChats(newChats)
+    }
+
+
     const updateChat = () => {
         if (newChat===null){
             // console.log(newChat)
@@ -155,27 +173,31 @@ const Chats = () => {
             return
         }
 
-        // console.log(newChat)
-
-        let newChats = []
-
-        // console.log(new_message)
-        // for (let i = 0; i < chats.length; i++){
-        //     const old_chat = chats[i]
-        //     newChats = [old_chat,...newChats]
-        // }
-
-        // newChats = [newChat,...newChats]
-        newChats = [newChat,...chats]
-
-        // newChats.sort(
-        //     (m1, m2) => {
-        //         return m1.chat_id - m2.chat_id;
-        //     }
-        // )
-
-        setChats(newChats)
+        setChats([newChat,...chats])
     }
+
+
+    const loadOldestMessages = () => {
+
+        console.log('I was wrote from callback')
+
+        let lastMessageId = -1
+
+        for (let i = 0; i < chats.length; i ++) {
+            if (chats[i].chat_id !== currentChatId){
+                continue
+            }
+            if (chats[i].messages.length === 0){
+                return
+            }
+            lastMessageId = chats[i].messages[chats[i].messages.length - 1].message_id
+
+        }
+
+        fetchOlderMessages(token, currentChatId, lastMessageId)
+        //todo
+    }
+
 
 
     const gettingData = () => {
@@ -192,10 +214,10 @@ const Chats = () => {
                 ws.send('Bearer ' + token)
             }
             else if (parsed_message.info === "Auth succeeded"){
-                console.log('WebSocket auth succeeded')
+                // console.log('WebSocket auth succeeded')
             }
             else if (errors.includes(parsed_message.info)){
-                console.log(parsed_message.info)
+                // console.log(parsed_message.info)
             }
             else if (parsed_message.info === "newMessage"){
                 const new_message = parsed_message.message
@@ -220,21 +242,32 @@ const Chats = () => {
 
 
     useEffect(() => {
-        updateMessage()
+        updateChatOnNewMessage()
     }, [newMessage]);
+
+
+
+    useEffect(() => {
+        updateMessages()
+    }, [oldMessages]);
+
+
 
     useEffect(() => {
         updateChat()
     }, [newChat]);
 
      useEffect(() => {
-        rewriteMessage()
+        updateMessagesOnRead()
     }, [messageRead]);
 
 
     useEffect(() => {
         fetchChats(token)
     }, [])
+
+
+    useEffect(() => {document.title = 'Messenger'}, [])
     
 
     // useEffect(() => {
@@ -250,9 +283,9 @@ const Chats = () => {
     
         isMobile
         ?
-        <MobileChat chats={chats} currentChatId={currentChatId} setCurrentChatId={setCurrentChatId} />
+        <MobileChat chats={chats} currentChatId={currentChatId} setCurrentChatId={setCurrentChatId} loadOldestMessages={loadOldestMessages}/>
         :
-        <Chat chats={chats} currentChatId={currentChatId} setCurrentChatId={setCurrentChatId} />
+        <Chat chats={chats} currentChatId={currentChatId} setCurrentChatId={setCurrentChatId} loadOldestMessages={loadOldestMessages}/>
 
     
     );

@@ -3,27 +3,39 @@ import ChatBar from "../ChatBar/ChatBar";
 import ChatView from "../ChatView/ChatView";
 import React, {useContext, useEffect, useState} from "react";
 
-const Chat = ({chats, currentChatId, setCurrentChatId}) => {
+const Chat = ({chats, currentChatId, setCurrentChatId, loadOldestMessages}) => {
 
-    const [currentChat, setCurrentChat] = useState(null)
+    // const [currentChat, setCurrentChat] = useState(null)
 
-    useEffect(() => {
+
+    const getCurrentChat = () => {
         if (currentChatId === -1){
-            setCurrentChat(null)
+            return null
         }
         for (let i = 0; i < chats.length; i++){
             if (chats[i].chat_id === currentChatId){
-                setCurrentChat(chats[i])
+                return chats[i]
             }
         }
-    }, [currentChatId])
+    }
+
+    // useEffect(() => {
+    //     if (currentChatId === -1){
+    //         setCurrentChat(null)
+    //     }
+    //     for (let i = 0; i < chats.length; i++){
+    //         if (chats[i].chat_id === currentChatId){
+    //             setCurrentChat(chats[i])
+    //         }
+    //     }
+    // }, [currentChatId])
 
 
     return (
         <div className={classes.container}>
             <div className={classes.chat}>
                 <ChatBar chats={chats} setCurrentChatId={setCurrentChatId} chatId={currentChatId}/>
-                <ChatView chat={currentChat} setCurrentChatId={setCurrentChatId}/>
+                <ChatView chat={getCurrentChat()} setCurrentChatId={setCurrentChatId} loadOldestMessages={loadOldestMessages}/>
             </div>
         </div>
 

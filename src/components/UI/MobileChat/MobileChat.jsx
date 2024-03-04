@@ -3,7 +3,7 @@ import MobileChatBar from "../MobileChatBar/MobileChatBar";
 import ChatView from "../ChatView/ChatView";
 import React, {useContext, useEffect, useState} from "react";
 
-const MobileChat = ({chats, currentChatId, setCurrentChatId}) => {
+const MobileChat = ({chats, currentChatId, setCurrentChatId, loadOldestMessages}) => {
 
     const [currentChat, setCurrentChat] = useState(null)
 
@@ -27,7 +27,7 @@ const MobileChat = ({chats, currentChatId, setCurrentChatId}) => {
                     ?
                         <MobileChatBar chats={chats} setCurrentChatId={setCurrentChatId} chatId={currentChatId}/>
                     :
-                        <ChatView chat={currentChat} setCurrentChatId={setCurrentChatId}/>
+                        <ChatView chat={currentChat} setCurrentChatId={setCurrentChatId} loadOldestMessages={loadOldestMessages}/>
                 }
             </div>
         </div>

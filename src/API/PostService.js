@@ -50,6 +50,21 @@ export default class PostService {
         return response
     }
 
+
+
+    static async getOlderMessages(token, chat_id, message_id) {
+        const response = await axios.get(server_path + 'get_messages/', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            },
+            params: { chat_id: chat_id, oldest_message_id:message_id}
+            })
+        return response
+    }
+
+
+
+
     static async sendMessage(token, chat_id, content) {
         const response = await axios.post(server_path + 'send_message/', {
             chat_id:chat_id,

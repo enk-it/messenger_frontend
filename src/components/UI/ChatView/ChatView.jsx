@@ -7,7 +7,7 @@ import {AuthContext} from "../../../context";
 import {useFetching} from "../../../hooks/useFetching";
 import PostService from "../../../API/PostService";
 
-const ChatView = ({chat, setCurrentChatId}) => {
+const ChatView = ({chat, setCurrentChatId, loadOldestMessages}) => {
 
     const {isAuth, setIsAuth} = useContext(AuthContext)
     const {token, setToken} = useContext(AuthContext)
@@ -25,6 +25,9 @@ const ChatView = ({chat, setCurrentChatId}) => {
             }
         }
     })
+
+
+    //todo realise new fetching older messages.
 
     const messagesRead = () => {
         if (chat === null){
@@ -73,7 +76,7 @@ const ChatView = ({chat, setCurrentChatId}) => {
         else{
             return <div className={classes.chat}>
                 <ChatHeader setCurrentChatId={setCurrentChatId} title={chat.title}/>
-                <ChatMessages messages={chat.messages}/>
+                <ChatMessages messages={chat.messages} loadOldestMessages={loadOldestMessages}/>
                 <ChatInput chat={chat}/>
             </div>
         }

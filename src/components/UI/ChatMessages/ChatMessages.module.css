@@ -4,11 +4,10 @@
     overflow-y: scroll;
     width: 100%;
     height: calc(100% - 80px - 64px);
-    /*height: 100%;*/
     padding-left: 5px;
     padding-right: 5px;
     padding-bottom: 10px;
-
+    align-items: center
 }
 
 

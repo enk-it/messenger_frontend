@@ -4,7 +4,7 @@ import {AuthContext} from "../../../context";
 
 import Message from "../Message/Message";
 
-const ChatMessages = ({messages}) => {
+const ChatMessages = ({messages, loadOldestMessages}) => {
     let messagesToRender = []
 
     const getReadableDate = (timestamp) => {
@@ -20,19 +20,29 @@ const ChatMessages = ({messages}) => {
             return messagesToRender
     }
 
-
+    const observer = useRef(null)
     const divRef = useRef(null);
-
-
+    const divRefEnd = useRef(null);
 
 
     useEffect(() => {
         divRef.current.scrollIntoView({ behavior: 'smooth' });
-    });
+    }, []);
+
+    useEffect(() => {
+        observer.current = new IntersectionObserver((entries, obs) => {
+            // console.log('Im visible', entries)
+            if (entries[0].isIntersecting === true){
+                loadOldestMessages()
+            }
+        });
+        observer.current.observe(divRefEnd.current)
+    }, [])
 
 
     return (
         <div className={classes.chatScroller}>
+            <div style={{padding: 15}} ref={divRefEnd}/>
             {renderMessages()}
             <div ref={divRef}/>
         </div>
