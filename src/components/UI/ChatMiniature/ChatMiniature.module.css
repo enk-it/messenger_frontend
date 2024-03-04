@@ -58,6 +58,7 @@
     width: 100%;
     padding-left: 10px;
     padding-right: 5px;
+    width: calc(100% - 56px);
 }
 
 
