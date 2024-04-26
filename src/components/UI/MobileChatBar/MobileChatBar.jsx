@@ -26,7 +26,7 @@ const MobileChatBar = ({chats, setCurrentChatId, chatId}) => {
 
                 <Input placeholder={'Search'} styles={classes.Input} onChange={(e) => {setQuery(e.target.value)}}></Input>
                 <Button styles={classes.newChatButton} onClick={() => {setLookingForNewChat(true)}}>
-                    <img className={classes.addImg} alt={''} src={'https://messenger.enkit.ru/api/share/avatar/add.png'}/>
+                    <img className={classes.addImg} alt={''} src={'https://messenger.gladyshdd.ru/api/share/avatar/add.png'}/>
                 </Button>    
 
             </div>

@@ -3,7 +3,7 @@ import { getSHA256Hash } from "boring-webcrypto-sha256";
 
 
 // const server_path = 'http://192.168.0.12:8000/' //debug
-const server_path = 'https://messenger.enkit.ru:443/api/' //debug
+const server_path = 'https://messenger.gladyshdd.ru:443/api/' //debug
 // const server_path = 'http://192.168.0.17:8000/' //production
 
 

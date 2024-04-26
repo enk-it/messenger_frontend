@@ -62,7 +62,7 @@ const ChatMiniature = ({chat, setCurrentChatId, chatId}) => {
     return (
         <div  className={getCurrentStyle()} onClick={chatChoosen}>
             <div className={classes.pictureBackground}>
-                <img alt={''} src={'https://messenger.enkit.ru/api/share/avatar/' + chat.avatar_url} className={classes.avatar}></img>
+                <img alt={''} src={'https://messenger.gladyshdd.ru/api/share/avatar/' + chat.avatar_url} className={classes.avatar}></img>
             </div>
 
             <div className={classes.textData}>

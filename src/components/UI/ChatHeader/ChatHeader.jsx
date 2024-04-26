@@ -11,7 +11,7 @@ const ChatHeader = ({setCurrentChatId, title}) => {
                 setCurrentChatId !== null
                 ?
                 <Button styles={classes.backButton} onClick={() => {setCurrentChatId(-1)}}>
-                    <img className={classes.backButton} alt={''} src={'https://messenger.enkit.ru/api/share/avatar/back.png'}/>
+                    <img className={classes.backButton} alt={''} src={'https://messenger.gladyshdd.ru/api/share/avatar/back.png'}/>
                 </Button>
                 :
                 <div></div>  

@@ -15,7 +15,7 @@ const UserMiniature = ({user, startChat}) => {
     return (
         <div className={classes.userMiniature}>
             <div className={classes.pictureBackground}>
-                    <img src={'https://messenger.enkit.ru/api/share/avatar/' + user.avatar_url} className={classes.userPicture} alt=""/>
+                    <img src={'https://messenger.gladyshdd.ru/api/share/avatar/' + user.avatar_url} className={classes.userPicture} alt=""/>
             </div>
             {online(user.is_online)}
 
