@@ -1,2 +1,2 @@
 # messenger_frontend
-https://messenger.enkit.ru/
+https://messenger.gladyshdd.ru/
