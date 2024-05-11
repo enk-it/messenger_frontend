@@ -1,6 +1,8 @@
 .Input {
     border: solid 1px #ECEEF2;
     background: #F6F7F9;
+    transition: all 0.25s ease;
+
 }
 
 .Input:focus{
