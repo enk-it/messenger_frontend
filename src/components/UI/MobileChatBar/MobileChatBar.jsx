@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState, useRef} from 'react';
+import React, {useCallback, useEffect, useState, useRef, useContext} from 'react';
 import classes from './MobileChatBar.module.css'
 import ChatMiniature from "../ChatMiniature/ChatMiniature";
 import Input from "../Input/Input";
@@ -6,6 +6,7 @@ import Button from "..//Button/Button";
 import StartChatForm from "../StartChatForm/StartChatForm";
 
 import {useChats} from "../../../hooks/useChats"
+import {AuthContext} from "../../../context";
 
 const MobileChatBar = ({chats, setCurrentChatId, chatId}) => {
     const ref = useRef(null);
@@ -15,7 +16,19 @@ const MobileChatBar = ({chats, setCurrentChatId, chatId}) => {
     const [lookingForNewChat, setLookingForNewChat] = useState(false);
 
 
+    const {token, setToken} = useContext(AuthContext)
+    const {isAuth, setIsAuth} = useContext(AuthContext)
+
+
     const sortedAndFileteredChats = useChats(chats, query);
+
+    const logout = () => {
+        localStorage.setItem('auth', false)
+        localStorage.setItem('token', '')
+        setToken('')
+        setIsAuth(false)
+
+    }
 
 
     return (
@@ -27,7 +40,10 @@ const MobileChatBar = ({chats, setCurrentChatId, chatId}) => {
                 <Input placeholder={'Search'} styles={classes.Input} onChange={(e) => {setQuery(e.target.value)}}></Input>
                 <Button styles={classes.newChatButton} onClick={() => {setLookingForNewChat(true)}}>
                     <img className={classes.addImg} alt={''} src={'https://messenger.gladyshdd.ru/api/share/avatar/add.png'}/>
-                </Button>    
+                </Button>
+                <Button styles={classes.newChatButton} onClick={() => {logout()}}>
+                    Logout
+                </Button>
 
             </div>
 

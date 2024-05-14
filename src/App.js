@@ -14,12 +14,13 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (localStorage.getItem('auth')){
+      console.log(localStorage.getItem('auth'))
+    if (localStorage.getItem('auth') === 'logged'){
         setIsAuth(true)
         setToken(localStorage.getItem('token'))
     } else {
         setIsAuth(false)
-        setToken(localStorage.getItem(''))
+        setToken('')
     }
 
     setIsLoading(false)

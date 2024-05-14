@@ -1,14 +1,19 @@
-import React, {useCallback, useEffect, useState, useRef} from 'react';
+import React, {useCallback, useEffect, useState, useRef, useContext} from 'react';
 import classes from './ChatBar.module.css'
 import ChatMiniature from "../ChatMiniature/ChatMiniature";
 import Input from "../Input/Input";
 import Button from "..//Button/Button";
 import StartChatForm from "../StartChatForm/StartChatForm";
+import {AuthContext} from "../../../context";
 
 import {useChats} from "../../../hooks/useChats"
 
 const ChatBar = ({chats, setCurrentChatId, chatId}) => {
     const ref = useRef(null);
+
+    const {token, setToken} = useContext(AuthContext)
+    const {isAuth, setIsAuth} = useContext(AuthContext)
+
 
 
     const [query, setQuery] = useState('');
@@ -37,6 +42,13 @@ const ChatBar = ({chats, setCurrentChatId, chatId}) => {
     }, []);
 
 
+    const logout = () => {
+        localStorage.setItem('auth', false)
+        localStorage.setItem('token', '')
+        setToken('')
+        setIsAuth(false)
+
+    }
 
 
 
@@ -49,7 +61,10 @@ const ChatBar = ({chats, setCurrentChatId, chatId}) => {
                 <Input placeholder={'Search'} styles={classes.Input} onChange={(e) => {setQuery(e.target.value)}}></Input>
                 <Button styles={classes.newChatButton} onClick={() => {setLookingForNewChat(true)}}>
                     <img className={classes.addImg} alt={''} src={'https://messenger.gladyshdd.ru/api/share/avatar/add.png'}/>
-                </Button>    
+                </Button>
+                <Button styles={classes.newChatButton} onClick={() => {logout()}}>
+                    Logout
+                </Button>
 
             </div>
 

@@ -30,6 +30,10 @@ const AuthForm = () => {
 
             setUserId(response.data.user_id);
             setToken(response.data.token);
+
+            localStorage.setItem('auth', 'logged')
+            localStorage.setItem('token', response.data.token)
+
             setIsAuth(true);   
         }
         catch (e){
@@ -50,6 +54,10 @@ const AuthForm = () => {
 
             setUserId(response.data.user_id);
             setToken(response.data.token);
+
+            localStorage.setItem('auth', 'logged')
+            localStorage.setItem('token', response.data.token)
+
             setIsAuth(true);
         }
         catch (e){
